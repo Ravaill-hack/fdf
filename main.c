@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/12 11:38:59 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:07:59 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_param(t_draw *param, void *mlx_ptr, void *win_ptr)
 	param->y = 500;
 	param->col = 0xFFFFFF;
 	param->i = 0;
+	param->thick = 10;
 }
 
 void	chose_color(t_draw *param, int i)
@@ -41,6 +42,29 @@ void	chose_color(t_draw *param, int i)
 		param->col = 0xD9BF16;
 }
 
+int	draw_group(t_draw *n)
+{
+	int		i;
+	int		j;
+	int		thk;
+
+	thk = n->thick;
+	i = -1 * (thk / 2);
+	j = i;
+	while (i <= (thk / 2))
+	{
+		j = -1 * (thk / 2);
+		while (j <= (thk / 2))
+		{
+			chose_color(n, n->i);
+			mlx_pixel_put(n->p_mlx, n->p_win, n->x + i, n->y + j, n->col);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	do_sth(int keycode, void *param)
 {
 	t_draw	*n;
@@ -52,17 +76,18 @@ int	do_sth(int keycode, void *param)
 		return (0);
 	}
 	if (keycode == 65362)
-		n->y -= 10;
+		n->y -= n->thick;
 	else if (keycode == 65364)
-		n->y += 10;
+		n->y += n->thick;
 	else if (keycode == 65361)
-		n->x -= 10;
+		n->x -= n->thick;
 	else if (keycode == 65363)
-		n->x += 10;
+		n->x += n->thick;
 	ft_putchar('c');
 	//mlx_clear_window(n->p_mlx, n->p_win);
-	chose_color(n, n->i);
-	mlx_pixel_put(n->p_mlx, n->p_win, n->x, n->y, n->col);
+	//chose_color(n, n->i);
+	//mlx_pixel_put(n->p_mlx, n->p_win, n->x, n->y, n->col);
+	draw_group(n);
 	n->i += 1;
 	return (0);
 }
