@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/12 11:29:17 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:38:59 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ void	init_param(t_draw *param, void *mlx_ptr, void *win_ptr)
 	param->x = 500;
 	param->y = 500;
 	param->col = 0xFFFFFF;
+	param->i = 0;
+}
+
+void	chose_color(t_draw *param, int i)
+{
+	if (i % 4 == 0)
+		param->col = 0x42AAFF;
+	else if (i % 4 == 1)
+		param->col = 0xFF482B;
+	else if (i % 4 == 2)
+		param->col = 0x79BD7C;
+	else if (i % 4 == 3)
+		param->col = 0xD9BF16;
 }
 
 int	do_sth(int keycode, void *param)
@@ -47,8 +60,10 @@ int	do_sth(int keycode, void *param)
 	else if (keycode == 65363)
 		n->x += 10;
 	ft_putchar('c');
-	mlx_clear_window(n->p_mlx, n->p_win);
+	//mlx_clear_window(n->p_mlx, n->p_win);
+	chose_color(n, n->i);
 	mlx_pixel_put(n->p_mlx, n->p_win, n->x, n->y, n->col);
+	n->i += 1;
 	return (0);
 }
 

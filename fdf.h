@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/12 11:14:19 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:37:35 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_draw
 	int		x;
 	int		y;
 	int		col;
+	int		i;
 }	t_draw;
 
 #endif
