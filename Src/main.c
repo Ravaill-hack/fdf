@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/13 11:33:21 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:53:31 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,40 @@ int	do_sth(int keycode, void *param)
 	n->i += 1;
 	return (0);
 }
+/*
+int	**get_map(char *map_t)
+{
+	int	**tab;
+	char	*temp;
+	int	nb_lines;
+	int	fd;
+	int	i;
+	int	c;
+
+	nb_lines = 0;
+	i = 0;
+	c = 1;
+	temp = NULL;
+	fd = open(map_t, O_RDONLY);
+	while (temp != NULL)
+	{
+		temp = get_next_line(fd);
+		nb_lines++;
+		free(temp);
+	}
+	close (fd);
+	tab = malloc(sizeof(int *) * nb_lines);
+	fd = open(map_t, O_RDONLY);
+	while (temp != NULL || c == 1)
+	{
+		temp = get_next_line(fd);
+		tab[i] = malloc(ft_strlen(temp) * sizeof(int));
+		c = 0;
+		i++;
+	}
+	return (tab);
+}
+*/
 
 int	main(void)
 {
@@ -93,6 +127,8 @@ int	main(void)
 	int		size_x;
 	int		size_y;
 	void	*win_ptr;
+	//int		**map_i;
+	//char	*map_t;
 	t_draw	*param;
 
 	mlx_ptr = mlx_init();
@@ -100,7 +136,14 @@ int	main(void)
 	size_y = 1000;
 	win_ptr = mlx_new_window(mlx_ptr, size_x, size_y, "Test");
 	param = malloc(sizeof(t_draw));
+	//map_i = malloc(sizeof(int *));
+	//map_t = ft_strdup("../Maps/test_maps/10-2.fdf");
+	//map_i = get_map(map_t);
 	init_param(param, mlx_ptr, win_ptr);
 	mlx_key_hook(win_ptr, do_sth, (void *)param);
 	mlx_loop(mlx_ptr);
+	mlx_destroy_window(mlx_ptr, win_ptr);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
+	free(param);
 }
