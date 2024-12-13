@@ -4,9 +4,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_DIR = ./Includes/libft
 
+LIBMLX_DIR = ./Includes/minilibx-linux
+
 LIBFT = -L $(LIBFT_DIR) -lft
 
-LIBMLX = -L ./Includes/minilibx-linux -lmlx -lXext -lX11
+LIBMLX = -L $(LIBMLX_DIR) -lmlx -lXext -lX11
 
 SRCS_DIR = Src
 
@@ -27,7 +29,7 @@ $(NAME):$(OBJS)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
-	$(CC) $(CFLAGS) -I ./Includes/minilibx-linux -c $< -o $@
+	$(CC) $(CFLAGS) -I $(LIBMLX_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
