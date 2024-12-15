@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/15 19:30:04 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:50:16 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 /* Specifie qu'un appui sur la touche Esc permet de quitter le programme */
 
-void	init_param(t_draw *param, void *mlx_ptr, void *win_ptr)
+t_draw	*init_param(void *mlx_ptr, void *win_ptr)
 {
+	t_draw	*param;
+
+	param = malloc(sizeof(t_draw));
 	param->p_mlx = mlx_ptr;
 	param->p_win = win_ptr;
 	param->x = 500;
@@ -23,6 +26,7 @@ void	init_param(t_draw *param, void *mlx_ptr, void *win_ptr)
 	param->col = 0xFFFFFF;
 	param->i = 0;
 	param->thick = 20;
+	return (param);
 }
 
 void	chose_color(t_draw *param, int i)
@@ -119,7 +123,7 @@ int	ft_count_lines(char **str)
 	return (i);
 }
 
-char	**get_map_1(char *map_t)
+char	**fill_char_tab(char *map_t)
 {
 	char	**tab;
 	char	*temp;
@@ -148,10 +152,9 @@ char	**get_map_1(char *map_t)
 	return (tab);
 }
 
-int	**get_map(char *map_t)
+int	**fill_int_tab(char **tab_s)
 {
 	int		**tab_i;
-	char	**tab_s;
 	int		nb_lines;
 	char	**temp;
 	int		i;
@@ -159,8 +162,7 @@ int	**get_map(char *map_t)
 
 	i = 0;
 	j = 0;
-	tab_s = get_map_1(map_t);
-	nb_lines = get_len_file(map_t);
+	nb_lines = ft_count_lines(tab_s);
 	tab_i = (int **)malloc(sizeof(int *) * nb_lines);
 	while (i < nb_lines)
 	{
@@ -178,30 +180,38 @@ int	**get_map(char *map_t)
 	return (tab_i);
 }
 
-int	main(void)
+t_map *get_map(char *path)
+{
+	t_map	*map;
+
+	map = malloc(sizeof(t_map));
+	map->map = fill_int_tab(fill_char_tab(path));
+	return (map);
+}
+
+
+int	main(int argc, char **argv)
 {
 	void	*mlx_ptr;
 	int		size_x;
 	int		size_y;
 	void	*win_ptr;
-	int		**map_i;
-	char	*map_t;
+	t_map	*map;
 	t_draw	*param;
 
+	(void) argc;
 	mlx_ptr = mlx_init();
 	size_x = 1000;
 	size_y = 1000;
 	win_ptr = mlx_new_window(mlx_ptr, size_x, size_y, "Test");
-	param = malloc(sizeof(t_draw));
-	map_t = ft_strdup("../Maps/test_maps/10-2.fdf");
-	map_i = get_map(map_t);
-	init_param(param, mlx_ptr, win_ptr);
+	param = init_param(mlx_ptr, win_ptr);
+	map = get_map("Maps/test_maps/10-2.fdf");
+	map->path = argv[1];
 	mlx_key_hook(win_ptr, do_sth, (void *)param);
 	mlx_loop(mlx_ptr);
 	mlx_destroy_window(mlx_ptr, win_ptr);
 	mlx_destroy_display(mlx_ptr);
 	free(mlx_ptr);
 	free(param);
-	free(map_i);
-	free(map_t);
+	free(map);
 }

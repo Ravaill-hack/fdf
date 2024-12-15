@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/13 11:34:42 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:38:23 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include <stdlib.h>
 # include "minilibx-linux/mlx.h"
 # include "libft/Includes/libft.h"
+
+typedef struct s_map
+{
+	char	*title;
+	char	*path;
+	int		**map;
+	int		size_x;
+	int		size_y;
+}	t_map;
 
 typedef struct s_draw
 {
