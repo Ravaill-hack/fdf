@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/13 17:19:19 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:30:04 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,16 @@ int	get_len_file(char *map_t)
 	return (nb_lines);
 }
 
+int	ft_count_lines(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != NULL)
+		i++;
+	return (i);
+}
+
 char	**get_map_1(char *map_t)
 {
 	char	**tab;
@@ -120,13 +130,16 @@ char	**get_map_1(char *map_t)
 	nb_lines = get_len_file(map_t);
 	i = 0;
 	temp = NULL;
-	tab = malloc(sizeof(char *) * nb_lines);
+	tab = (char **)malloc(sizeof(char *) * (nb_lines + 1));
 	fd = open(map_t, O_RDONLY);
 	while (i < nb_lines)
 	{
 		temp = get_next_line(fd);
-		tab[i] = malloc(ft_strlen(temp) * sizeof(int));
+		if (temp == NULL)
+			break;
+		tab[i] = malloc((ft_strlen(temp) + 1) * sizeof(char));
 		tab[i] = ft_strdup(temp);
+		tab[i][ft_strlen(temp)] = '\0';
 		free(temp);
 		i++;
 	}
@@ -137,24 +150,31 @@ char	**get_map_1(char *map_t)
 
 int	**get_map(char *map_t)
 {
+	int		**tab_i;
 	char	**tab_s;
 	int		nb_lines;
-	char	**tab_i;
-	char	**temp;ft_lock
-	
-	int		fd;
+	char	**temp;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
+	tab_s = get_map_1(map_t);
 	nb_lines = get_len_file(map_t);
-	fd = open(map_t, O_RDONLY);
+	tab_i = (int **)malloc(sizeof(int *) * nb_lines);
 	while (i < nb_lines)
 	{
-		temp = get_next_line(fd);
-		tab[i] = malloc(ft_strlen(temp) * sizeof(int));
-		tab[i] = ft_strdup(temp);
+		temp = ft_split(tab_s[i], ' ');
+		tab_i[i] = malloc(sizeof(int) * ft_count_lines(temp));
+		j = 0;
+		while (temp[j] != NULL)
+		{
+			tab_i[i][j] = ft_atoi(temp[j]);
+			j++;
+		}
 		free(temp);
 		i++;
 	}
-	close(fd);
 	return (tab_i);
 }
 
@@ -182,4 +202,6 @@ int	main(void)
 	mlx_destroy_display(mlx_ptr);
 	free(mlx_ptr);
 	free(param);
+	free(map_i);
+	free(map_t);
 }
