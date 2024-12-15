@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/15 20:50:16 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/15 20:53:16 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ t_map *get_map(char *path)
 
 	map = malloc(sizeof(t_map));
 	map->map = fill_int_tab(fill_char_tab(path));
+	map->path = path;
 	return (map);
 }
 
@@ -200,13 +201,13 @@ int	main(int argc, char **argv)
 	t_draw	*param;
 
 	(void) argc;
+	(void) argv;
 	mlx_ptr = mlx_init();
 	size_x = 1000;
 	size_y = 1000;
 	win_ptr = mlx_new_window(mlx_ptr, size_x, size_y, "Test");
 	param = init_param(mlx_ptr, win_ptr);
 	map = get_map("Maps/test_maps/10-2.fdf");
-	map->path = argv[1];
 	mlx_key_hook(win_ptr, do_sth, (void *)param);
 	mlx_loop(mlx_ptr);
 	mlx_destroy_window(mlx_ptr, win_ptr);
