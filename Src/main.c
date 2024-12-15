@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/15 20:53:16 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/15 21:05:05 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,12 +180,45 @@ int	**fill_int_tab(char **tab_s)
 	return (tab_i);
 }
 
+void	ft_free_tab_c(char **str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i] != NULL)
+	{
+		free(str[i]);
+		str[i] = NULL;
+		i++;
+	}
+	free(str);
+	str = NULL;
+}
+
+void	ft_free_tab_i(int **tab)
+{
+	int	i;
+
+	i = 0;
+	while(tab[i])
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	free(tab);
+	tab = NULL;
+}
+
 t_map *get_map(char *path)
 {
 	t_map	*map;
+	char	**temp;
 
+	temp = fill_char_tab(path);
 	map = malloc(sizeof(t_map));
-	map->map = fill_int_tab(fill_char_tab(path));
+	map->map = fill_int_tab(temp);
+	ft_free_tab_c(temp);
 	map->path = path;
 	return (map);
 }
@@ -214,5 +247,6 @@ int	main(int argc, char **argv)
 	mlx_destroy_display(mlx_ptr);
 	free(mlx_ptr);
 	free(param);
+	ft_free_tab_i(map->map);
 	free(map);
 }
