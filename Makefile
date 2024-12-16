@@ -15,7 +15,13 @@ SRCS_DIR = Src
 OBJS_DIR = Obj
 
 SRCS_FILES =  \
-	$(SRCS_DIR)/main.c
+	$(SRCS_DIR)/main.c \
+	$(SRCS_DIR)/line_utils.c \
+	$(SRCS_DIR)/free_utils.c \
+	$(SRCS_DIR)/init.c \
+	$(SRCS_DIR)/events.c \
+	$(SRCS_DIR)/parsing.c \
+	$(SRCS_DIR)/utils.c
 
 OBJS = $(SRCS_FILES:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
