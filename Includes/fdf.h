@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 19:52:38 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 21:26:21 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ void	fdf_lstadd_right(t_point **points, t_point *new);
 t_point	**create_list(t_map *map, void *mlx_p, void *win_p);
 t_point	*get_current(t_point *lst);
 void	fill_points(t_map *map, t_point **points);
+t_point	*find_up(t_map *map, t_point *point, t_point *first);
+t_point	*find_dow(t_point *point, t_point *first);
+t_point	*find_lft(t_point *point, t_point *first);
+t_point	*find_rgt(t_map *map, t_point *point, t_point *first);
 void	find_neighbours(t_map *map, t_point **points);
 /*
 	Fonctions pour gerer les evenements

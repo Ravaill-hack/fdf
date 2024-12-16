@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 20:19:54 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 21:26:06 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	fill_points(t_map *map, t_point **points)
 		while (i < (map->size_x))
 		{
 			current->x = i;
-			current->y = j;
+			current->y = map->size_y - 1 - j;
 			current->z = map->map[j][i];
 			current = get_current(current);
 			i++;
@@ -84,26 +84,69 @@ void	fill_points(t_map *map, t_point **points)
 	}
 }
 
+t_point	*find_up(t_map *map, t_point *point, t_point *first)
+{
+	if (point->y == map->size_y - 1)
+		return (NULL);
+	while (first)
+	{
+		if((first->y == point->y + 1) && (first->x == point->x))
+			return (first);
+		first = first->next;
+	}
+	return (NULL);
+}
+
+t_point	*find_dow(t_point *point, t_point *first)
+{
+	if (point->y == 0)
+		return (NULL);
+	while (first)
+	{
+		if((first->y == point->y - 1) && (first->x == point->x))
+			return (first);
+		first = first->next;
+	}
+	return (NULL);	
+}
+
+t_point	*find_lft(t_point *point, t_point *first)
+{
+	if (point->x == 0)
+		return (NULL);
+	while (first)
+	{
+		if((first->y == point->y) && (first->x == point->x - 1))
+			return (first);
+		first = first->next;
+	}
+	return (NULL);
+}
+
+t_point	*find_rgt(t_map *map, t_point *point, t_point *first)
+{
+	if (point->x == map->size_x - 1)
+		return (NULL);
+	while (first)
+	{
+		if((first->y == point->y) && (first->x == point->x + 1))
+			return (first);
+		first = first->next;
+	}
+	return (NULL);
+}
+
 void	find_neighbours(t_map *map, t_point **points)
 {
-	int	i;
-	int	j;
 	t_point	*current;
 
-	i = 0;
-	j = 0;
 	current = *points;
-	while (j < (map->size_y))
+	while (current)
 	{
-		i = 0;
-		while (i < (map->size_x))
-		{
-			current->x = i;
-			current->y = map->size_y - 1 - j;
-			current->z = map->map[i][map->size_y - 1 - j];
-			current = get_current(*points);
-			i++;
-		}
-		j++;
+		current->lft = find_lft(current, *points);
+		current->rgt = find_rgt(map, current, *points);
+		current->dow = find_dow(current, *points);
+		current->up = find_up(map, current, *points);
+		current = current->next;
 	}
 }
