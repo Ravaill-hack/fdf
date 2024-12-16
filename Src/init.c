@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 15:33:30 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:33:01 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_point	*init_param(void *mlx_ptr, void *win_ptr)
 	param->x = 0;
 	param->y = 0;
 	param->z = 0;
+	param->next = NULL;
 	param->up = NULL;
 	param->dow = NULL;
 	param->rgt = NULL;

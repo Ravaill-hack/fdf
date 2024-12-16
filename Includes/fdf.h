@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 15:28:05 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:14:39 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_point
 {
 	void			*p_mlx;
 	void			*p_win;
+	struct s_point	*next;
 	struct s_point	*up;
 	struct s_point	*dow;
 	struct s_point	*lft;
