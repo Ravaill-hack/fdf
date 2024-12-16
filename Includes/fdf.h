@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 15:15:44 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 15:28:05 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,19 @@ typedef struct s_map
 
 typedef struct s_point
 {
-	void	*p_mlx;
-	void	*p_win;
-	int		x;
-	int		y;
-	int		z;
-	int		col;
-	int		i;
-	int		thick;
+	void			*p_mlx;
+	void			*p_win;
+	struct s_point	*up;
+	struct s_point	*dow;
+	struct s_point	*lft;
+	struct s_point	*rgt;
+	int				x;
+	int				y;
+	int				z;
+	int				col;
+	int				i;
+	int				thick;
 }	t_point;
-
-typedef struct s_nodes
-{
-	t_point			*points;
-	struct s_nodes	*up;
-	struct s_nodes	*dow;
-	struct s_nodes	*lft;
-	struct s_nodes	*rgt;
-}	t_nodes;
 
 /*
 	Fonctions auxiliaires
