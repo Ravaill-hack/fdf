@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 17:14:39 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:52:38 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ char	*get_title(char *path);
 char	**fill_char_tab(char *map_t);
 int		**fill_int_tab(char **tab_s);
 t_map 	*get_map(char *path);
+t_point	*fdf_lstlast(t_point *lst);
+void	fdf_lstadd_right(t_point **points, t_point *new);
+t_point	**create_list(t_map *map, void *mlx_p, void *win_p);
+t_point	*get_current(t_point *lst);
+void	fill_points(t_map *map, t_point **points);
+void	find_neighbours(t_map *map, t_point **points);
 /*
 	Fonctions pour gerer les evenements
 */

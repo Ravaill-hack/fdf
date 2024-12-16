@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 17:54:41 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 20:19:54 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	fill_points(t_map *map, t_point **points)
 		while (i < (map->size_x))
 		{
 			current->x = i;
-			current->y = map->size_y - 1 - j;
-			current->z = map->map[i][map->size_y - 1 - j];
-			current = get_current(*points);
+			current->y = j;
+			current->z = map->map[j][i];
+			current = get_current(current);
 			i++;
 		}
 		j++;
