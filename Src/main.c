@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 10:09:38 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:20:45 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ void	ft_free_tab_i(t_map *map)
 	}
 	free(map->map);
 	map->map = NULL;
+	free(map->title);
+	map->title = NULL;
 	free(map);
 	map = NULL;
 }
@@ -210,6 +212,25 @@ int	**fill_int_tab(char **tab_s)
 	return (tab_i);
 }
 
+char	*get_title(char *path)
+{
+	char	*title;
+	char	**temp;
+	int		i;
+
+	i = 0;
+	temp = ft_split(path, '/');
+	title = NULL;
+	while (temp[i] && temp[i + 1] != NULL)
+		i++;
+	if (temp != NULL)
+	{
+		title = ft_strdup(temp[i]);
+		ft_free_tab_c(temp);
+	}
+	return (title);
+}
+
 t_map *get_map(char *path)
 {
 	t_map	*map;
@@ -225,6 +246,7 @@ t_map *get_map(char *path)
 	ft_free_tab_c(temp);
 	ft_free_tab_c(temp2);
 	map->path = path;
+	map->title = get_title(path);
 	return (map);
 }
 
@@ -250,8 +272,10 @@ int	main(int argc, char **argv)
 	mlx_loop(mlx_ptr);
 	mlx_destroy_window(mlx_ptr, win_ptr);
 	mlx_destroy_display(mlx_ptr);
-	ft_printf("size x : %d\n", map->size_x);
+	ft_printf("\nsize x : %d\n", map->size_x);
 	ft_printf("size y : %d\n", map->size_y);
+	ft_printf("title : %s\n", map->title);
+	ft_printf("path : %s\n", map->path);
 	free(mlx_ptr);
 	free(param);
 	ft_free_tab_i(map);
