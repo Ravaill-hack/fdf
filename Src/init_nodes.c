@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 15:52:54 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:24:11 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ void	fill_points(t_map *map, t_point **points)
 		while (i < (map->size_x))
 		{
 			current->x = i;
-			current->y = map->size_y - 1 - j;
+			current->y = j;
 			current->z = map->map[j][i];
-			current->xp = current->x * zoom + 100;
-			current->yp = current->y * zoom + 100;
-			current->zp = current->z * zoom + 100;
+			current->xp = current->x * zoom + 60 * current->y + 200;
+			current->yp = current->y * zoom - 40 * current->x + 400 - 20 * current->z;
 			current = get_current(current);
 			i++;
 		}
