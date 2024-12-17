@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 12:08:59 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:53:15 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	int		size_y;
 	void	*win_ptr;
 	t_map	*map;
-	t_point	*param;
 	t_point	**nodes;
 
 	(void) argc;
@@ -28,18 +27,16 @@ int	main(int argc, char **argv)
 	size_x = 2000;
 	size_y = 1000;
 	win_ptr = mlx_new_window(mlx_ptr, size_x, size_y, "Test");
-	param = init_param(mlx_ptr, win_ptr);
+	//param = init_param(mlx_ptr, win_ptr);
 	map = get_map("Maps/test_maps/10-2.fdf");
 	nodes = create_list(map, mlx_ptr, win_ptr);
-	fill_points(map, nodes);
-	find_neighbours(map, nodes);
-	mlx_key_hook(win_ptr, do_sth, (void *)param);
+	mlx_key_hook(win_ptr, do_sth, (void *)nodes);
 	mlx_loop(mlx_ptr);
 	mlx_destroy_window(mlx_ptr, win_ptr);
 	mlx_destroy_display(mlx_ptr);
-	print_info_map(map);
-	print_info_list(*nodes);
+	// print_info_map(map);
+	// print_info_list(*nodes);
 	free(mlx_ptr);
-	free(param);
+	//free(param);
 	ft_free_tab_i(map);
 }

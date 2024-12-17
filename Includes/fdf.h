@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 12:28:18 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:59:31 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	find_neighbours(t_map *map, t_point **points);
 void	chose_color(t_point *param, int i);
 int		draw_group(t_point *n);
 int		do_sth(int keycode, void *param);
+void	lines(t_point *nodes);
 /*
 	Fonctions pour dessiner des lignes
 */

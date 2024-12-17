@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 15:15:16 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:50:39 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int	do_sth(int keycode, void *param)
 	//mlx_clear_window(n->p_mlx, n->p_win);
 	//chose_color(n, n->i);
 	//mlx_pixel_put(n->p_mlx, n->p_win, n->x, n->y, n->col);
-	draw_group(n);
+	//draw_group(n);
+	lines(n);
 	n->i += 1;
 	return (0);
 }

@@ -25,7 +25,8 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/utils.c \
 	$(SRCS_DIR)/info.c \
 	$(SRCS_DIR)/lst_utils.c \
-	$(SRCS_DIR)/neighbours.c
+	$(SRCS_DIR)/neighbours.c \
+	$(SRCS_DIR)/lines.c
 
 OBJS = $(SRCS_FILES:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
