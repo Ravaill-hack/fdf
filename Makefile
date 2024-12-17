@@ -22,7 +22,10 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/events.c \
 	$(SRCS_DIR)/parsing.c \
 	$(SRCS_DIR)/init_nodes.c \
-	$(SRCS_DIR)/utils.c
+	$(SRCS_DIR)/utils.c \
+	$(SRCS_DIR)/info.c \
+	$(SRCS_DIR)/lst_utils.c \
+	$(SRCS_DIR)/neighbours.c
 
 OBJS = $(SRCS_FILES:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 

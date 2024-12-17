@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 21:29:29 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:08:59 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,8 @@ int	main(int argc, char **argv)
 	mlx_loop(mlx_ptr);
 	mlx_destroy_window(mlx_ptr, win_ptr);
 	mlx_destroy_display(mlx_ptr);
-	ft_printf("\nsize x : %d\n", map->size_x);
-	ft_printf("size y : %d\n", map->size_y);
-	ft_printf("title : %s\n", map->title);
-	ft_printf("path : %s\n", map->path);
-	while (*nodes)
-	{
-		ft_printf("x : %d, y : %d, z : %d\n", (*nodes)->x, (*nodes)->y, (*nodes)->z);
-		ft_printf("adr : %p\n", *nodes);
-		ft_printf("up : %p, down : %p, left : %p, right : %p\n", (*nodes)->up, (*nodes)->dow, (*nodes)->lft, (*nodes)->rgt);
-		(*nodes) = (*nodes)->next;
-	}
+	print_info_map(map);
+	print_info_list(*nodes);
 	free(mlx_ptr);
 	free(param);
 	ft_free_tab_i(map);

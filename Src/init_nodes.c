@@ -6,26 +6,11 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 21:26:06 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:27:13 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
-
-t_point	*fdf_lstlast(t_point *lst)
-{
-	while (lst && lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
-
-void	fdf_lstadd_right(t_point **points, t_point *new)
-{
-	if (!(*points))
-		*points = new;
-	else
-		fdf_lstlast(*points)->next = new;
-}
 
 t_point	**create_list(t_map *map, void *mlx_p, void *win_p)
 {
@@ -51,15 +36,6 @@ t_point	**create_list(t_map *map, void *mlx_p, void *win_p)
 	return (points);
 }
 
-t_point	*get_current(t_point *lst)
-{
-	lst = lst->next;
-	if(lst)
-		return (lst);
-	else
-		return (NULL);
-}
-
 void	fill_points(t_map *map, t_point **points)
 {
 	int	i;
@@ -81,72 +57,5 @@ void	fill_points(t_map *map, t_point **points)
 			i++;
 		}
 		j++;
-	}
-}
-
-t_point	*find_up(t_map *map, t_point *point, t_point *first)
-{
-	if (point->y == map->size_y - 1)
-		return (NULL);
-	while (first)
-	{
-		if((first->y == point->y + 1) && (first->x == point->x))
-			return (first);
-		first = first->next;
-	}
-	return (NULL);
-}
-
-t_point	*find_dow(t_point *point, t_point *first)
-{
-	if (point->y == 0)
-		return (NULL);
-	while (first)
-	{
-		if((first->y == point->y - 1) && (first->x == point->x))
-			return (first);
-		first = first->next;
-	}
-	return (NULL);	
-}
-
-t_point	*find_lft(t_point *point, t_point *first)
-{
-	if (point->x == 0)
-		return (NULL);
-	while (first)
-	{
-		if((first->y == point->y) && (first->x == point->x - 1))
-			return (first);
-		first = first->next;
-	}
-	return (NULL);
-}
-
-t_point	*find_rgt(t_map *map, t_point *point, t_point *first)
-{
-	if (point->x == map->size_x - 1)
-		return (NULL);
-	while (first)
-	{
-		if((first->y == point->y) && (first->x == point->x + 1))
-			return (first);
-		first = first->next;
-	}
-	return (NULL);
-}
-
-void	find_neighbours(t_map *map, t_point **points)
-{
-	t_point	*current;
-
-	current = *points;
-	while (current)
-	{
-		current->lft = find_lft(current, *points);
-		current->rgt = find_rgt(map, current, *points);
-		current->dow = find_dow(current, *points);
-		current->up = find_up(map, current, *points);
-		current = current->next;
 	}
 }

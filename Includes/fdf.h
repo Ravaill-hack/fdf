@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 21:26:21 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:28:18 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ typedef struct s_point
 	int				x;
 	int				y;
 	int				z;
+	int				xp;
+	int				yp;
+	int				zp;
 	int				col;
 	int				i;
 	int				thick;
@@ -49,6 +52,11 @@ typedef struct s_point
 */
 int		get_len_file(char *map_t);
 int		ft_count_lines(char **str);
+/*
+	Fonctions de debuggage
+*/
+void	print_info_list(t_point *nodes);
+void	print_info_map(t_map *map);
 /*
 	Fonctions pour initialiser le projet
 */
