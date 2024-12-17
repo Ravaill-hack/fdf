@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 11:51:16 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 12:23:05 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:18:25 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	print_info_list(t_point *nodes)
 	while (nodes)
 	{
 		ft_printf("\nx : %d, y : %d, z : %d\n", nodes->x, nodes->y, nodes->z);
+		ft_printf("p_mlx : %p\n", nodes->p_mlx);
+		ft_printf("p_win : %p\n", nodes->p_win);
 		ft_printf("adr : %p\n", nodes);
 		ft_printf("up : %p, down : %p, left : %p, right : %p\n", nodes->up, nodes->dow, nodes->lft, nodes->rgt);
 		nodes = nodes->next;

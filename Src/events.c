@@ -6,7 +6,7 @@
 /*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 13:50:39 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:42:12 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,38 @@ int	draw_group(t_point *n)
 	return (0);
 }
 
+void	lines(t_point *nodes)
+{
+	t_point*	a;
+
+	a = nodes;
+	while (a)
+	{
+		if(a->rgt != NULL)
+			draw_line(a, a->rgt);
+		if(a->dow != NULL)
+			draw_line(a, a->dow);
+		a = a->next;
+	}
+}
+
 int	do_sth(int keycode, void *param)
 {
-	t_point	*n;
+	t_point	*nodes;
 
-	n = (t_point *)param;
+	nodes = (t_point *)param;
 	if (keycode == 65307)
 	{
-		mlx_loop_end(n->p_mlx);
+		mlx_loop_end(nodes->p_mlx);
 		return (0);
 	}
-	if (keycode == 65362)
-		n->y -= n->thick;
-	else if (keycode == 65364)
-		n->y += n->thick;
-	else if (keycode == 65361)
-		n->x -= n->thick;
-	else if (keycode == 65363)
-		n->x += n->thick;
-	ft_putchar('c');
 	//mlx_clear_window(n->p_mlx, n->p_win);
 	//chose_color(n, n->i);
 	//mlx_pixel_put(n->p_mlx, n->p_win, n->x, n->y, n->col);
 	//draw_group(n);
-	lines(n);
-	n->i += 1;
+	//draw_line(nodes, nodes->next);
+	lines(nodes);
+	//n->i += 1;
 	return (0);
 }
 

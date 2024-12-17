@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:53:20 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 15:07:43 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:01:05 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ int	draw_line(t_point *p1, t_point *p2)
 	int	dy;
 	double	slope;
 
-	if (p1->y == p2->y)
+	if (p1->xp == p2->xp)
 	{
 		draw_vertical_line(p1, p2);
 		return (0);
 	}
-	if (p1->x == p2->x)
+	if (p1->yp == p2->yp)
 	{
 		draw_horizontal_line(p1, p2);
 		return (0);
 	}
-	dx = p2->x - p1->x;
-	dy = p2->y - p1->y;
+	dx = p2->xp - p1->xp;
+	dy = p2->yp - p1->yp;
 	slope = ((double)dy) / ((double)dx);
 	if (slope < 1.0 && slope > -1.0)
 		draw_other_line(p1, p2, dx, dy);
@@ -43,16 +43,17 @@ int	draw_vertical_line(t_point *p1, t_point *p2)
 	int	x;
 	int	y;
 
-	x = p1->x;
-	y = p1->y;
-	while (y != p2->y)
+	x = p1->xp;
+	y = p1->yp;
+	while (y != p2->yp)
 	{
 		mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-		if (p1->y > p2->y)
+		if (p1->yp > p2->yp)
 			y--;
 		else
 			y++;
 	}
+	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
 	return (0);
 }
 
@@ -61,16 +62,17 @@ int	draw_horizontal_line(t_point *p1, t_point *p2)
 	int	x;
 	int	y;
 
-	x = p1->x;
-	y = p1->y;
-	while (x != p2->x)
+	x = p1->xp;
+	y = p1->yp;
+	while (x != p2->xp)
 	{
 		mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-		if (p1->x > p2->x)
+		if (p1->xp > p2->xp)
 			x--;
 		else
 			x++;
 	}
+	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
 	return (0);
 }
 
@@ -83,11 +85,11 @@ int	draw_other_line(t_point *p1, t_point *p2, int dx, int dy)
 
 	i = -1;
 	p = 2 * abs(dy) - abs(dx);
-	x = p1->x;
-	y = p1->y;
+	x = p1->xp;
+	y = p1->yp;
 	(void) p2;
 	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-	while (i < dx)
+	while (i < abs(dx))
 	{
 		i += 1;
 		if(dx > 0)
@@ -118,11 +120,11 @@ int	draw_other_line_rev(t_point *p1, t_point *p2, int dx, int dy)
 
 	i = -1;
 	p = 2 * abs(dy) - abs(dx);
-	x = p1->x;
-	y = p1->y;
+	x = p1->xp;
+	y = p1->yp;
 	(void) p2;
 	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-	while (i < dy)
+	while (i < abs(dy))
 	{
 		i += 1;
 		if(dy > 0)
