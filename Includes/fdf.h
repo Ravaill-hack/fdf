@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 13:59:31 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 09:35:46 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <math.h>
 # include "minilibx-linux/mlx.h"
 # include "libft/Includes/libft.h"
 
@@ -78,6 +79,10 @@ t_point	*find_dow(t_point *point, t_point *first);
 t_point	*find_lft(t_point *point, t_point *first);
 t_point	*find_rgt(t_map *map, t_point *point, t_point *first);
 void	find_neighbours(t_map *map, t_point **points);
+/*
+	Fonctions pour modifier l'affichage des noeuds
+*/
+void	set_points(t_map *map, t_point **points, int zoom, int alt);
 /*
 	Fonctions pour gerer les evenements
 */

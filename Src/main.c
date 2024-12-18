@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 16:01:24 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 09:49:27 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	main(int argc, char **argv)
 	size_y = 1500;
 	win_ptr = mlx_new_window(mlx_ptr, size_x, size_y, "Test");
 	//param = init_param(mlx_ptr, win_ptr);
-	map = get_map("Maps/test_maps/10-2.fdf");
+	map = get_map("Maps/test_maps/mars.fdf");
 	nodes = create_list(map, mlx_ptr, win_ptr);
+	set_points(map, nodes, 10, 5);
 	// print_info_map(map);
 	//ft_printf("adr mlx : %p\n", mlx_ptr);
 	//ft_printf("adr win : %p\n\n", win_ptr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 16:24:11 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 09:30:17 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	fill_points(t_map *map, t_point **points)
 {
 	int	i;
 	int	j;
-	int	zoom;
 	t_point	*current;
 
 	i = 0;
 	j = 0;
-	zoom = 100;
 	current = *points;
 	while (j < (map->size_y))
 	{
@@ -31,14 +29,16 @@ void	fill_points(t_map *map, t_point **points)
 			current->x = i;
 			current->y = j;
 			current->z = map->map[j][i];
-			current->xp = current->x * zoom + 60 * current->y + 200;
-			current->yp = current->y * zoom - 40 * current->x + 400 - 20 * current->z;
+			current->xp = current->x;
+			current->yp = current->y;
 			current = get_current(current);
 			i++;
 		}
 		j++;
 	}
 }
+
+
 
 t_point	**create_list(t_map *map, void *mlx_p, void *win_p)
 {
