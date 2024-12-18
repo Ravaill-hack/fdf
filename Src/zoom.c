@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:59:44 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 16:16:00 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:35:05 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@ void	zoom(int keycode, t_point **nodes)
 		lines(*nodes);
 	}
 }
+
