@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:03:10 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 11:50:47 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:36:36 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int	**fill_int_tab(char **tab_s)
 
 	i = 0;
 	j = 0;
-	nb_lines = ft_count_lines(tab_s);
+	nb_lines = ft_count_words(tab_s);
 	tab_i = (int **)malloc(sizeof(int *) * nb_lines);
 	while (i < nb_lines)
 	{
 		temp = ft_split(tab_s[i], ' ');
-		tab_i[i] = malloc(sizeof(int) * ft_count_lines(temp));
+		tab_i[i] = malloc(sizeof(int) * ft_count_words(temp));
 		j = 0;
 		while (temp[j] != NULL)
 		{
@@ -77,7 +77,7 @@ t_map *get_map(char *path)
 	temp2 = ft_split(temp[0], ' ');
 	map = malloc(sizeof(t_map));
 	map->map = fill_int_tab(temp);
-	map->size_x = ft_count_lines(temp2) - 1;
+	map->size_x = ft_count_words(temp2);
 	map->size_y = get_len_file(path) - 1;
 	ft_free_tab_c(temp);
 	ft_free_tab_c(temp2);

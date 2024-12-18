@@ -27,6 +27,7 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/lst_utils.c \
 	$(SRCS_DIR)/neighbours.c \
 	$(SRCS_DIR)/trigo.c \
+	$(SRCS_DIR)/move.c \
 	$(SRCS_DIR)/set_nodes.c
 
 OBJS = $(SRCS_FILES:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)

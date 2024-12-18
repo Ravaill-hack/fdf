@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 11:50:11 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:19:07 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_point
 	Fonctions auxiliaires
 */
 int		get_len_file(char *map_t);
-int		ft_count_lines(char **str);
+int		ft_count_words(char **str);
 /*
 	Fonctions de debuggage
 */
@@ -84,14 +84,20 @@ void	find_neighbours(t_map *map, t_point **points);
 /*
 	Fonctions pour modifier l'affichage des noeuds
 */
+int		set_default_zoom(t_map *map);
+int		set_y_offset(t_map *map);
 void	set_points(t_map *map, t_point **points, int alt);
 /*
 	Fonctions pour gerer les evenements
 */
 void	chose_color(t_point *param, int i);
-int		draw_group(t_point *n);
-int		do_sth(int keycode, void *param);
+int		do_sth(int keycode, t_point **nodes);
 void	lines(t_point *nodes);
+void	move(int keycode, t_point **nodes);
+void	move_up(t_point **nodes);
+void	move_dow(t_point **nodes);
+void	move_lft(t_point **nodes);
+void	move_rgt(t_point **nodes);
 /*
 	Fonctions pour dessiner des lignes
 */

@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:06:09 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 15:07:13 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 14:35:32 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	get_len_file(char *map_t)
 	return (nb_lines);
 }
 
-int	ft_count_lines(char **str)
+int	ft_count_words(char **str)
 {
 	int	i;
 
