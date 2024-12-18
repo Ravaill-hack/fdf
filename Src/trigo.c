@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:40:31 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 15:18:35 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 15:42:21 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,23 @@ int	set_default_zoom(t_map *map)
 		return((int)(((double)(map->win_x))/(rgt[0] - lft[0])));
 }
 
-int	set_y_offset(t_map *map)
+int	set_x_offset(t_map *map, int zoom)
+{
+	double	lft[2];
+	double	lft_tmp[2];
+	double	rgt[2];
+	double	rgt_tmp[2];
+
+	lft_tmp[1] = (double)(map->size_y) - 1.0;
+	lft[0] = (- lft_tmp[1]) * 0.866;
+	lft[1] = (lft_tmp[1]) * 0.5;
+	rgt_tmp[0] = (double)(map->size_x) - 1.0;
+	rgt[0] = (rgt_tmp[0]) * 0.866;
+	rgt[1] = (rgt_tmp[0]) * 0.5;
+	return((int)((map->win_x - zoom * (rgt[0] - lft[0] - 2 * fabs(lft[0]))) / 2 ));
+}
+
+int	set_y_offset(t_map *map, int zoom)
 {
 	double	dow[2];
 	double	dow_tmp[2];
@@ -45,5 +61,5 @@ int	set_y_offset(t_map *map)
 	dow_tmp[0] = (double)(map->size_x) - 1.0;
 	dow_tmp[1] = (double)(map->size_y) - 1.0;
 	dow[1] = (dow_tmp[0] + dow_tmp[1]) * 0.5;
-	return((int)(((map->win_y) / 2) - (dow[1] / 2)));
+	return((int)((map->win_y - zoom * dow[1]) / 2 ));
 }

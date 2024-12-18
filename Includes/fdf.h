@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 15:19:07 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:16:50 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 # include "libft/Includes/libft.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 typedef struct s_map
 {
@@ -85,14 +87,17 @@ void	find_neighbours(t_map *map, t_point **points);
 	Fonctions pour modifier l'affichage des noeuds
 */
 int		set_default_zoom(t_map *map);
-int		set_y_offset(t_map *map);
-void	set_points(t_map *map, t_point **points, int alt);
+int		set_x_offset(t_map *map, int zoom);
+int		set_y_offset(t_map *map, int zoom);
+void	set_points(t_map *map, t_point **points);
+void	set_zoom(t_point **points, double zoom);
 /*
 	Fonctions pour gerer les evenements
 */
 void	chose_color(t_point *param, int i);
 int		do_sth(int keycode, t_point **nodes);
 void	lines(t_point *nodes);
+void	zoom(int keycode, t_point **nodes);
 void	move(int keycode, t_point **nodes);
 void	move_up(t_point **nodes);
 void	move_dow(t_point **nodes);
