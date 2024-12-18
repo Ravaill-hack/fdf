@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 10:50:40 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:50:11 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_map
 	int		**map;
 	int		size_x;
 	int		size_y;
+	int		win_x;
+	int		win_y;
 }	t_map;
 
 typedef struct s_point
@@ -82,7 +84,7 @@ void	find_neighbours(t_map *map, t_point **points);
 /*
 	Fonctions pour modifier l'affichage des noeuds
 */
-void	set_points(t_map *map, t_point **points, int zoom, int alt);
+void	set_points(t_map *map, t_point **points, int alt);
 /*
 	Fonctions pour gerer les evenements
 */

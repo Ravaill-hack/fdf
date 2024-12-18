@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:03:10 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/16 15:06:54 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:50:47 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ t_map *get_map(char *path)
 	ft_free_tab_c(temp2);
 	map->path = path;
 	map->title = get_title(path);
+	map->win_x = 3000;
+	map->win_y = 2000;
 	return (map);
 }
