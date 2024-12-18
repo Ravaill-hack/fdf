@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 09:35:46 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 10:50:40 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ int		draw_other_line_rev(t_point *p1, t_point *p2, int dx, int dy);
 */
 void	ft_free_tab_c(char **str);
 void	ft_free_tab_i(t_map *map);
+void	ft_free_nodes(t_point **nodes);
 
 #endif

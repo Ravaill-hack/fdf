@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:24:12 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 12:25:25 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:20:49 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_point	*fdf_lstlast(t_point *lst)
 
 void	fdf_lstadd_right(t_point **points, t_point *new)
 {
+	if (!new)
+		return;
 	if (!(*points))
 		*points = new;
 	else

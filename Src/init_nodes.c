@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 09:30:17 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:33:37 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	fill_points(t_map *map, t_point **points)
 	}
 }
 
-
-
 t_point	**create_list(t_map *map, void *mlx_p, void *win_p)
 {
 	t_point	**points;
@@ -48,9 +46,10 @@ t_point	**create_list(t_map *map, void *mlx_p, void *win_p)
 
 	i = 0;
 	j = 0;
-	points = (t_point **)malloc(sizeof(t_point *) * (map->size_y) * (map->size_x));
+	points = (t_point **)malloc(sizeof(t_point *));
 	if (!points)
 		return (NULL);
+	(*points) = NULL;
 	while (j < (map->size_y))
 	{
 		i = 0;
