@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 11:40:54 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:29:07 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,14 @@ typedef struct s_point
 	int				i;
 	int				thick;
 }	t_point;
+
+typedef struct s_line
+{
+	int		x;
+	int		y;
+	int		p;
+	int		i;
+}	t_line;
 
 /*
 	Fonctions auxiliaires
@@ -110,10 +118,10 @@ void	move_rgt(t_point **nodes);
 	Fonctions pour dessiner des lignes
 */
 int		draw_line(t_point *p1, t_point *p2);
-int		draw_vertical_line(t_point *p1, t_point *p2);
-int		draw_horizontal_line(t_point *p1, t_point *p2);
-int		draw_other_line(t_point *p1, t_point *p2, int dx, int dy);
-int		draw_other_line_rev(t_point *p1, t_point *p2, int dx, int dy);
+void	draw_vertical_line(t_point *p1, t_point *p2);
+void	draw_horizontal_line(t_point *p1, t_point *p2);
+void	draw_other_line(t_point *p1, int dx, int dy);
+void	draw_other_line_rev(t_point *p1, int dx, int dy);
 /*
 	Fonctions pour free et delete
 */

@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:53:20 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 10:53:47 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:31:04 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	draw_line(t_point *p1, t_point *p2)
 	dy = p2->yp - p1->yp;
 	slope = ((double)dy) / ((double)dx);
 	if (slope < 1.0 && slope > -1.0)
-		draw_other_line(p1, p2, dx, dy);
+		draw_other_line(p1, dx, dy);
 	else
-		draw_other_line_rev(p1, p2, dx, dy);
+		draw_other_line_rev(p1, dx, dy);
 	return (0);
 }
 
-int	draw_vertical_line(t_point *p1, t_point *p2)
+void	draw_vertical_line(t_point *p1, t_point *p2)
 {
 	int	x;
 	int	y;
@@ -54,10 +54,9 @@ int	draw_vertical_line(t_point *p1, t_point *p2)
 			y++;
 	}
 	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-	return (0);
 }
 
-int	draw_horizontal_line(t_point *p1, t_point *p2)
+void	draw_horizontal_line(t_point *p1, t_point *p2)
 {
 	int	x;
 	int	y;
@@ -73,75 +72,60 @@ int	draw_horizontal_line(t_point *p1, t_point *p2)
 			x++;
 	}
 	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-	return (0);
 }
 
-int	draw_other_line(t_point *p1, t_point *p2, int dx, int dy)
+void	draw_other_line(t_point *p1, int dx, int dy)
 {
-	int	i;
-	int	p;
-	int	x;
-	int	y;
+	t_line	l;
 
-	i = -1;
-	p = 2 * abs(dy) - abs(dx);
-	x = p1->xp;
-	y = p1->yp;
-	(void) p2;
-	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-	while (i < abs(dx))
+	l.i = -1;
+	l.p = 2 * abs(dy) - abs(dx);
+	l.x = p1->xp;
+	l.y = p1->yp;
+	while (++l.i <= abs(dx))
 	{
-		i += 1;
+		mlx_pixel_put(p1->p_mlx, p1->p_win, l.x, l.y, p1->col);
 		if (dx > 0)
-			x += 1;
+			l.x += 1;
 		else
-			x -= 1;
-		if (p < 0)
-			p = p + 2 * abs(dy);
+			l.x -= 1;
+		if (l.p < 0)
+			l.p = l.p + 2 * abs(dy);
 		else
 		{
 			if (dy > 0)
-				y += 1;
+				l.y += 1;
 			else
-				y -= 1;
-			p = p + 2 * abs(dy) - 2 * abs(dx);
+				l.y -= 1;
+			l.p = l.p + 2 * abs(dy) - 2 * abs(dx);
 		}
-		mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
 	}
-	return (0);
 }
 
-int	draw_other_line_rev(t_point *p1, t_point *p2, int dx, int dy)
+void	draw_other_line_rev(t_point *p1, int dx, int dy)
 {
-	int	i;
-	int	p;
-	int	x;
-	int	y;
+	t_line	l;
 
-	i = -1;
-	p = 2 * abs(dy) - abs(dx);
-	x = p1->xp;
-	y = p1->yp;
-	(void) p2;
-	mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
-	while (i < abs(dy))
+	l.i = -1;
+	l.p = 2 * abs(dy) - abs(dx);
+	l.x = p1->xp;
+	l.y = p1->yp;
+	while (++l.i < abs(dy))
 	{
-		i += 1;
+		mlx_pixel_put(p1->p_mlx, p1->p_win, l.x, l.y, p1->col);
 		if (dy > 0)
-			y += 1;
+			l.y += 1;
 		else
-			y -= 1;
-		if (p < 0)
-			p = p + 2 * abs(dx);
+			l.y -= 1;
+		if (l.p < 0)
+			l.p = l.p + 2 * abs(dx);
 		else
 		{
 			if (dx > 0)
-				x += 1;
+				l.x += 1;
 			else
-				x -= 1;
-			p = p + 2 * abs(dx) - 2 * abs(dy);
+				l.x -= 1;
+			l.p = l.p + 2 * abs(dx) - 2 * abs(dy);
 		}
-		mlx_pixel_put(p1->p_mlx, p1->p_win, x, y, p1->col);
 	}
-	return (0);
 }
