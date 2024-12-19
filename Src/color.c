@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 09:43:38 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 14:52:42 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:02:33 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,24 @@ int	ext_col(char *str)
 
 	i = 0;
 	start = 0;
-	while (str[i] != '\0')
+	while (str[++i] != '\0')
 	{
 		if (str[i] == ',')
 			start = i + 3;
-		i++;
 	}
 	if (start == 0)
 		return (0xFFFFFF);
 	else
 	{
-		while (str[start] != '\0')
+		i = 0;
+		while (i <= 5 && str[start + i] != '\0')
 		{
-			if (ft_strchr("0123456789abcdef", str[start]) != NULL)
-				return (ext_col_low(str, start));
-			start++;
+			if (ft_strchr("0123456789abcdef", str[start + i]) != NULL)
+				return (ext_col_low(str, start + i));
+			else if (ft_strchr("0123456789ABCDEF", str[start + i]) != NULL)
+				return (ext_col_up(str, start + i));
+			i++;
 		}
 	}
-	return (ext_col_up(str, start));
+	return (0xFFFFFF);
 }
