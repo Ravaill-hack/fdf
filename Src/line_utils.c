@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:53:20 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 16:01:05 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:53:47 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	draw_line(t_point *p1, t_point *p2)
 {
-	int	dx;
-	int	dy;
+	int		dx;
+	int		dy;
 	double	slope;
 
 	if (p1->xp == p2->xp)
@@ -92,7 +92,7 @@ int	draw_other_line(t_point *p1, t_point *p2, int dx, int dy)
 	while (i < abs(dx))
 	{
 		i += 1;
-		if(dx > 0)
+		if (dx > 0)
 			x += 1;
 		else
 			x -= 1;
@@ -127,7 +127,7 @@ int	draw_other_line_rev(t_point *p1, t_point *p2, int dx, int dy)
 	while (i < abs(dy))
 	{
 		i += 1;
-		if(dy > 0)
+		if (dy > 0)
 			y += 1;
 		else
 			y -= 1;

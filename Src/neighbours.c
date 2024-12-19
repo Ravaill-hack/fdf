@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   neighbours.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:26:13 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 12:26:53 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:23:10 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_point	*find_up(t_map *map, t_point *point, t_point *first)
 		return (NULL);
 	while (first)
 	{
-		if((first->y == point->y + 1) && (first->x == point->x))
+		if ((first->y == point->y + 1) && (first->x == point->x))
 			return (first);
 		first = first->next;
 	}
@@ -31,11 +31,11 @@ t_point	*find_dow(t_point *point, t_point *first)
 		return (NULL);
 	while (first)
 	{
-		if((first->y == point->y - 1) && (first->x == point->x))
+		if ((first->y == point->y - 1) && (first->x == point->x))
 			return (first);
 		first = first->next;
 	}
-	return (NULL);	
+	return (NULL);
 }
 
 t_point	*find_lft(t_point *point, t_point *first)
@@ -44,7 +44,7 @@ t_point	*find_lft(t_point *point, t_point *first)
 		return (NULL);
 	while (first)
 	{
-		if((first->y == point->y) && (first->x == point->x - 1))
+		if ((first->y == point->y) && (first->x == point->x - 1))
 			return (first);
 		first = first->next;
 	}
@@ -57,7 +57,7 @@ t_point	*find_rgt(t_map *map, t_point *point, t_point *first)
 		return (NULL);
 	while (first)
 	{
-		if((first->y == point->y) && (first->x == point->x + 1))
+		if ((first->y == point->y) && (first->x == point->x + 1))
 			return (first);
 		first = first->next;
 	}

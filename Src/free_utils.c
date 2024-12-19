@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:59:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 10:50:25 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 09:55:23 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_tab_c(char **str)
 	int	i;
 
 	i = 0;
-	while(str[i] != NULL)
+	while (str[i] != NULL)
 	{
 		free(str[i]);
 		str[i] = NULL;
@@ -32,7 +32,7 @@ void	ft_free_tab_i(t_map *map)
 	int	i;
 
 	i = 0;
-	while(i < map->size_y)
+	while (i < map->size_y)
 	{
 		free(map->map[i]);
 		map->map[i] = NULL;

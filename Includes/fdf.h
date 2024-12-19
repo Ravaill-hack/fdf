@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 16:34:57 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:40:54 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_map
 	char	*title;
 	char	*path;
 	int		**map;
+	int		**col;
 	int		size_x;
 	int		size_y;
 	int		win_x;
@@ -72,6 +73,7 @@ char	*get_title(char *path);
 */
 char	**fill_char_tab(char *map_t);
 int		**fill_int_tab(char **tab_s);
+int		**fill_col_tab(char **tab_s);
 t_map 	*get_map(char *path);
 t_point	*fdf_lstlast(t_point *lst);
 void	fdf_lstadd_right(t_point **points, t_point *new);
@@ -83,12 +85,13 @@ t_point	*find_dow(t_point *point, t_point *first);
 t_point	*find_lft(t_point *point, t_point *first);
 t_point	*find_rgt(t_map *map, t_point *point, t_point *first);
 void	find_neighbours(t_map *map, t_point **points);
+int		ext_col(char *str, int i);
 /*
 	Fonctions pour modifier l'affichage des noeuds
 */
 int		set_default_zoom(t_map *map);
-int		set_x_offset(t_map *map, int zoom);
-int		set_y_offset(t_map *map, int zoom);
+int		x_off(t_map *map, int zo);
+int		y_off(t_map *map, int zo);
 void	set_points(t_map *map, t_point **points);
 void	set_zoom(t_point **points, double zoom);
 /*

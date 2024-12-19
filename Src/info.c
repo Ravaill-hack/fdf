@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   info.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 11:51:16 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/17 15:18:25 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:52:18 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
-void	print_info_list(t_point *nodes)
+void	print_info_list(t_point *n)
 {
-	while (nodes)
+	while (n)
 	{
-		ft_printf("\nx : %d, y : %d, z : %d\n", nodes->x, nodes->y, nodes->z);
-		ft_printf("p_mlx : %p\n", nodes->p_mlx);
-		ft_printf("p_win : %p\n", nodes->p_win);
-		ft_printf("adr : %p\n", nodes);
-		ft_printf("up : %p, down : %p, left : %p, right : %p\n", nodes->up, nodes->dow, nodes->lft, nodes->rgt);
-		nodes = nodes->next;
+		ft_printf("\nx : %d, y : %d, z : %d\n", n->x, n->y, n->z);
+		ft_printf("p_mlx : %p\n", n->p_mlx);
+		ft_printf("p_win : %p\n", n->p_win);
+		ft_printf("adr : %p\n", n);
+		ft_printf("up : %p, down : %p, ", n->up, n->dow);
+		ft_printf("left : %p, right : %p\n", n->lft, n->rgt);
+		n = n->next;
 	}
 }
 
@@ -42,6 +43,7 @@ void	print_info_map(t_map *map)
 		while (i < map->size_x)
 		{
 			ft_printf("%d ", map->map[j][i]);
+			ft_printf("%d ", map->col[j][i]);
 			i++;
 		}
 		ft_printf("\n");

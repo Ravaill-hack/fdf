@@ -28,6 +28,7 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/ft_memcmp.c \
 	$(SRCS_DIR)/ft_strnstr.c \
 	$(SRCS_DIR)/ft_atoi.c \
+	$(SRCS_DIR)/ft_atoi_base.c \
 	$(SRCS_DIR)/ft_calloc.c \
 	$(SRCS_DIR)/ft_strdup.c \
 	$(SRCS_DIR)/ft_substr.c \
@@ -44,6 +45,7 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/ft_lstnew.c \
 	$(SRCS_DIR)/ft_lstadd_front.c \
 	$(SRCS_DIR)/ft_lstsize.c \
+	$(SRCS_DIR)/ft_strstr.c \
 	$(SRCS_DIR)/ft_lstlast.c \
 	$(SRCS_DIR)/ft_lstadd_back.c \
 	$(SRCS_DIR)/ft_lstdelone.c \

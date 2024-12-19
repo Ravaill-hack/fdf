@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:30:33 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 16:39:33 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:40:18 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	set_points(t_map *map, t_point **points)
 {
-	int	i;
-	int	tmp;
-	int	zoom;
+	int		i;
+	int		t;
+	int		zo;
 	t_point	*l;
 
 	i = 0;
-	tmp = 0;
+	t = 0;
 	l = *points;
-	zoom = set_default_zoom(map);
+	zo = set_default_zoom(map);
 	while (i < ((map->size_y) * (map->size_x)))
 	{
-		tmp = l->xp;
-		l->xp = set_x_offset(map, zoom) + zoom * ((tmp - l->yp) * 0.866);
-		l->yp = set_y_offset(map, zoom) + zoom * ((tmp + l->yp) * 0.5) - /*1.2195 **/ zoom * l->z;
+		t = l->xp;
+		l->xp = x_off(map, zo) + zo * ((t - l->yp) * 0.866);
+		l->yp = y_off(map, zo) + zo * ((t + l->yp) * 0.5) - 0.2 * zo * l->z;
 		l = get_current(l);
 		i++;
 	}

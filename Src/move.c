@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:02:30 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 14:20:58 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:42:08 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	move_rgt(t_point **nodes)
 	mlx_clear_window((*nodes)->p_mlx, (*nodes)->p_win);
 	lines(*nodes);
 }
+
 void	move(int keycode, t_point **nodes)
 {
 	if (keycode == 65362)

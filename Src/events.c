@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 16:35:19 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:50:47 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	chose_color(t_point *param, int i)
 
 void	lines(t_point *nodes)
 {
-	t_point*	a;
+	t_point	*a;
 
 	a = nodes;
 	while (a)
 	{
-		if(a->rgt != NULL)
+		if (a->rgt != NULL)
 			draw_line(a, a->rgt);
-		if(a->dow != NULL)
+		if (a->dow != NULL)
 			draw_line(a, a->dow);
 		a = a->next;
 	}
@@ -46,12 +46,7 @@ int	do_sth(int keycode, t_point **nodes)
 		mlx_loop_end((*nodes)->p_mlx);
 		return (0);
 	}
-	//mlx_clear_window(n->p_mlx, n->p_win);
-	//chose_color(n, n->i);
-	//mlx_pixel_put(n->p_mlx, n->p_win, n->x, n->y, n->col);
-	//lines(*nodes);
 	move(keycode, nodes);
 	zoom(keycode, nodes);
 	return (0);
 }
-

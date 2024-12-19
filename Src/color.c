@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 12:24:12 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 10:54:46 by lmatkows         ###   ########.fr       */
+/*   Created: 2024/12/19 09:43:38 by lmatkows          #+#    #+#             */
+/*   Updated: 2024/12/19 10:37:08 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
-t_point	*fdf_lstlast(t_point *lst)
+int	ext_col(char *str, int i)
 {
-	while (lst && lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
+	char	*color;
+	int		nb;
 
-void	fdf_lstadd_right(t_point **points, t_point *new)
-{
-	if (!new)
-		return ;
-	if (!(*points))
-		*points = new;
-	else
-		fdf_lstlast(*points)->next = new;
-}
-
-t_point	*get_current(t_point *lst)
-{
-	lst = lst->next;
-	if (lst)
-		return (lst);
-	else
-		return (NULL);
+	color = ft_substr(str, (unsigned)i + 2, 6);
+	nb = ft_atoi_base(color, "0123456789ABCDEF");
+	free (color);
+	color = NULL;
+	return (nb);
 }

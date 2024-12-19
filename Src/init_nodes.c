@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 11:33:37 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:52:43 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	fill_points(t_map *map, t_point **points)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_point	*current;
 
 	i = 0;
@@ -41,8 +41,8 @@ void	fill_points(t_map *map, t_point **points)
 t_point	**create_list(t_map *map, void *mlx_p, void *win_p)
 {
 	t_point	**points;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

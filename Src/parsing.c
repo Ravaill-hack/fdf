@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:03:10 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 14:36:36 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:49:08 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**fill_char_tab(char *map_t)
 	{
 		temp = get_next_line(fd);
 		if (temp == NULL)
-			break;
+			break ;
 		tab[i] = ft_strdup(temp);
 		free(temp);
 		i++;
@@ -67,7 +67,36 @@ int	**fill_int_tab(char **tab_s)
 	return (tab_i);
 }
 
-t_map *get_map(char *path)
+int	**fill_col_tab(char **tab_s)
+{
+	int		**tab_col;
+	char	**t;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	tab_col = (int **)malloc(sizeof(int *) * ft_count_words(tab_s));
+	while (i < ft_count_words(tab_s))
+	{
+		t = ft_split(tab_s[i], ' ');
+		tab_col[i] = malloc(sizeof(int) * ft_count_words(t));
+		j = 0;
+		while (t[j] != NULL)
+		{
+			if (ft_strstr(t[j], "0x") != -1)
+				tab_col[i][j] = ext_col(t[j], ft_strstr(t[j], "0x"));
+			else
+				tab_col[i][j] = 0xFFFFFF;
+			j++;
+		}
+		ft_free_tab_c(t);
+		i++;
+	}
+	return (tab_col);
+}
+
+t_map	*get_map(char *path)
 {
 	t_map	*map;
 	char	**temp;
@@ -77,6 +106,7 @@ t_map *get_map(char *path)
 	temp2 = ft_split(temp[0], ' ');
 	map = malloc(sizeof(t_map));
 	map->map = fill_int_tab(temp);
+	map->col = fill_col_tab(temp);
 	map->size_x = ft_count_words(temp2);
 	map->size_y = get_len_file(path) - 1;
 	ft_free_tab_c(temp);

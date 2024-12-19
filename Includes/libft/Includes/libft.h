@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:14:27 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/13 11:21:00 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:39:54 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int		ft_isvar(const char *s, int i);
 int		ft_print_sth(va_list elem, char symb);
 int		ft_printf(const char *arg, ...);
 
-
 /*
 	GNL
 */
@@ -118,5 +117,12 @@ char	*gnl_substrto(char *str, char c);
 char	*gnl_substrfrom(char *str, char c);
 int		gnl_strchr(char *str, char c);
 char	*get_next_line(int fd);
+
+/*
+	other
+*/
+
+int		ft_strstr(const char *s1, const char *s2);
+int		ft_atoi_base(const char *str, const char *base);
 
 #endif
