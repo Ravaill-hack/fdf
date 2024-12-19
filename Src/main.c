@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 14:53:28 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:19:28 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 		win_ptr = mlx_new_window(mlx_ptr, map->win_x, map->win_y, "Test");
 		nodes = create_list(map, mlx_ptr, win_ptr);
 		set_points(map, nodes);
+		print_info_map(map);
+		print_info_list(*nodes);
 		lines(*nodes);
 		mlx_key_hook(win_ptr, do_sth, (void *)(nodes));
 		mlx_loop(mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/18 11:17:17 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:16:26 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ char	*get_title(char *path)
 	int		i;
 
 	i = 0;
-	temp = ft_split(path, '/');
 	title = NULL;
-	while (temp[i] && temp[i + 1] != NULL)
+	temp = ft_split(path, '/');
+	if (!temp)
+		return (NULL);
+	while (temp[i] != NULL)
 		i++;
-	if (temp != NULL)
-	{
-		title = ft_strdup(temp[i]);
-		ft_free_tab_c(temp);
-	}
+	if (i > 0)
+		title = ft_strdup(temp[i - 1]);
+	ft_free_tab_c(temp);
 	return (title);
 }

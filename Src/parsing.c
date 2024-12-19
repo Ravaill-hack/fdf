@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:03:10 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 14:04:34 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:25:49 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ int	**fill_int_tab(char **tab_s)
 	i = 0;
 	j = 0;
 	nb_lines = ft_count_words(tab_s);
-	tab_i = (int **)malloc(sizeof(int *) * nb_lines);
-	while (i < nb_lines)
+	tab_i = (int **)malloc(sizeof(int *) * (nb_lines + 1));
+	while (tab_s[i] != NULL)
 	{
 		temp = ft_split(tab_s[i], ' ');
-		tab_i[i] = malloc(sizeof(int) * ft_count_words(temp));
+		tab_i[i] = (int *)malloc(sizeof(int) * ft_count_words(temp));
 		j = 0;
-		while (temp[j] != NULL)
+		while (j < ft_count_words(temp))
 		{
 			tab_i[i][j] = ft_atoi(temp[j]);
 			j++;
@@ -64,6 +64,7 @@ int	**fill_int_tab(char **tab_s)
 		ft_free_tab_c(temp);
 		i++;
 	}
+	tab_i[i] = NULL;
 	return (tab_i);
 }
 
@@ -104,8 +105,8 @@ t_map	*get_map(char *path)
 	map = malloc(sizeof(t_map));
 	map->map = fill_int_tab(temp);
 	map->col = fill_col_tab(temp);
-	map->size_x = ft_count_words(temp2);
-	map->size_y = get_len_file(path) - 1;
+	map->size_x = ft_count_words(temp2) - 1;
+	map->size_y = get_len_file(path);
 	ft_free_tab_c(temp);
 	ft_free_tab_c(temp2);
 	map->path = path;

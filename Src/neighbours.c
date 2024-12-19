@@ -6,32 +6,32 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:26:13 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 11:23:10 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:24:32 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
-t_point	*find_up(t_map *map, t_point *point, t_point *first)
-{
-	if (point->y == map->size_y - 1)
-		return (NULL);
-	while (first)
-	{
-		if ((first->y == point->y + 1) && (first->x == point->x))
-			return (first);
-		first = first->next;
-	}
-	return (NULL);
-}
-
-t_point	*find_dow(t_point *point, t_point *first)
+t_point	*find_up(t_point *point, t_point *first)
 {
 	if (point->y == 0)
 		return (NULL);
 	while (first)
 	{
 		if ((first->y == point->y - 1) && (first->x == point->x))
+			return (first);
+		first = first->next;
+	}
+	return (NULL);
+}
+
+t_point	*find_dow(t_map *map, t_point *point, t_point *first)
+{
+	if (point->y == map->size_y - 1)
+		return (NULL);
+	while (first)
+	{
+		if ((first->y == point->y + 1) && (first->x == point->x))
 			return (first);
 		first = first->next;
 	}
@@ -73,8 +73,8 @@ void	find_neighbours(t_map *map, t_point **points)
 	{
 		current->lft = find_lft(current, *points);
 		current->rgt = find_rgt(map, current, *points);
-		current->dow = find_dow(current, *points);
-		current->up = find_up(map, current, *points);
+		current->dow = find_dow(map, current, *points);
+		current->up = find_up(current, *points);
 		current = current->next;
 	}
 }
