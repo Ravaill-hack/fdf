@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 12:29:07 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:05:11 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ t_point	*find_dow(t_point *point, t_point *first);
 t_point	*find_lft(t_point *point, t_point *first);
 t_point	*find_rgt(t_map *map, t_point *point, t_point *first);
 void	find_neighbours(t_map *map, t_point **points);
-int		ext_col(char *str, int i);
+int		ext_col_up(char *str, int i);
+int		ext_col_low(char *str, int i);
+int		ext_col(char *str);
 /*
 	Fonctions pour modifier l'affichage des noeuds
 */

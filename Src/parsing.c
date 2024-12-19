@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:03:10 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 10:49:08 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:04:34 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ int	**fill_col_tab(char **tab_s)
 		j = 0;
 		while (t[j] != NULL)
 		{
-			if (ft_strstr(t[j], "0x") != -1)
-				tab_col[i][j] = ext_col(t[j], ft_strstr(t[j], "0x"));
-			else
-				tab_col[i][j] = 0xFFFFFF;
+			tab_col[i][j] = ext_col(t[j]);
 			j++;
 		}
 		ft_free_tab_c(t);
