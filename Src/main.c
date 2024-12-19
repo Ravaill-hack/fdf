@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 12:51:15 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:53:28 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,5 @@ int	main(int argc, char **argv)
 		free(mlx_ptr);
 		ft_free_tab_i(map);
 		ft_free_nodes(nodes);
-		ft_printf("%d\n", (*nodes)->col);
-		ft_printf("%d\n", ext_col("0xff", ft_strstr("0xff", "0x")));
 	}
 }
