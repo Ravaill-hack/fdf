@@ -6,32 +6,65 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:40:31 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 11:40:37 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:43:13 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
-int	set_default_zoom(t_map *map)
+double	find_z_max(t_map *map)
 {
-	double	lft[2];
-	double	lft_tmp[2];
-	double	rgt[2];
-	double	rgt_tmp[2];
-	double	dow[2];
+	int	i;
+	int	j;
+	int	max;
 
-	dow[0] = (map->size_x - map->size_y) * 0.866;
-	dow[1] = (map->size_x + map->size_y - 2.0) * 0.5;
-	lft_tmp[1] = (double)(map->size_y) - 1.0;
-	lft[0] = (-lft_tmp[1]) * 0.866;
-	lft[1] = (lft_tmp[1]) * 0.5;
-	rgt_tmp[0] = (double)(map->size_x) - 1.0;
-	rgt[0] = (rgt_tmp[0]) * 0.866;
-	rgt[1] = (rgt_tmp[0]) * 0.5;
-	if (dow[1] >= (rgt[0] - lft[0]))
-		return ((int)(((double)(map->win_y)) / (dow[1])));
-	else
-		return ((int)(((double)(map->win_x)) / (rgt[0] - lft[0])));
+	i = 0;
+	j = 0;
+	max = map->map[j][i];
+	while (j < map->size_y)
+	{
+		i = 0;
+		while (i < map->size_x)
+		{
+			if (map->map[j][i] > max)
+				max = map->map[j][i];
+			i++;
+		}
+		j++;
+	}
+	return (max);
+}
+
+double	find_z_min(t_map *map)
+{
+	int	i;
+	int	j;
+	int	min;
+
+	i = 0;
+	j = 0;
+	min = map->map[j][i];
+	while (j < map->size_y)
+	{
+		i = 0;
+		while (i < map->size_x)
+		{
+			if (map->map[j][i] < min)
+				min = map->map[j][i];
+			i++;
+		}
+		j++;
+	}
+	return (min);
+}
+
+double	set_default_zz(t_map *map)
+{
+	double	delta_z;
+
+	delta_z = fabs(find_z_max(map)) + fabs(find_z_min(map));
+	ft_printf("%d\n", (int)delta_z);
+	return (100.0 / delta_z);
 }
 
 int	x_off(t_map *map, int zo)

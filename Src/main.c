@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 16:19:28 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:42:45 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,16 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		mlx_ptr = mlx_init();
 		map = get_map(argv[1]);
+		mlx_ptr = mlx_init();
 		win_ptr = mlx_new_window(mlx_ptr, map->win_x, map->win_y, "Test");
 		nodes = create_list(map, mlx_ptr, win_ptr);
 		set_points(map, nodes);
-		print_info_map(map);
-		print_info_list(*nodes);
 		lines(*nodes);
 		mlx_key_hook(win_ptr, do_sth, (void *)(nodes));
 		mlx_loop(mlx_ptr);
 		mlx_destroy_window(mlx_ptr, win_ptr);
 		mlx_destroy_display(mlx_ptr);
-		free(mlx_ptr);
-		ft_free_tab_i(map);
-		ft_free_nodes(nodes);
+		ft_free_all(mlx_ptr, map, nodes);
 	}
 }

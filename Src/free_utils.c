@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:59:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 16:16:43 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:43:10 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,11 @@ void	ft_free_nodes(t_point **nodes)
 		*nodes = temp;
 	}
 	free(nodes);
+}
+
+void	ft_free_all(void *p_mlx, t_map *map, t_point **nodes)
+{
+	free(p_mlx);
+	ft_free_tab_i(map);
+	ft_free_nodes(nodes);
 }

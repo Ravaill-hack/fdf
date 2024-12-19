@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 16:22:15 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:37:55 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,13 @@ int		ext_col(char *str);
 	Fonctions pour modifier l'affichage des noeuds
 */
 int		set_default_zoom(t_map *map);
+double	set_default_zz(t_map *map);
 int		x_off(t_map *map, int zo);
 int		y_off(t_map *map, int zo);
 void	set_points(t_map *map, t_point **points);
 void	set_zoom(t_point **points, double zoom);
+double	find_z_min(t_map *map);
+double	find_z_max(t_map *map);
 /*
 	Fonctions pour gerer les evenements
 */
@@ -130,5 +133,6 @@ void	draw_other_line_rev(t_point *p1, int dx, int dy);
 void	ft_free_tab_c(char **str);
 void	ft_free_tab_i(t_map *map);
 void	ft_free_nodes(t_point **nodes);
+void	ft_free_all(void *p_mlx, t_map *map, t_point **nodes);
 
 #endif
