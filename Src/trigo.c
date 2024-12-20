@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trigo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:40:31 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 17:43:13 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:31:02 by Lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ double	set_default_zz(t_map *map)
 	double	delta_z;
 
 	delta_z = fabs(find_z_max(map)) + fabs(find_z_min(map));
-	ft_printf("%d\n", (int)delta_z);
 	return (100.0 / delta_z);
 }
 
