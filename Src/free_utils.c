@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:59:00 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/20 15:56:27 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:30:38 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,10 @@ void	ft_free_all(void *p_mlx, t_map *map, t_point **nodes)
 
 void	finish_process(t_libx *ptr, t_map *map, t_point **nodes)
 {
-	//mlx_destroy_image(ptr->mlx, ptr->img);
+	mlx_destroy_image(ptr->mlx, ptr->img);
 	mlx_destroy_window(ptr->mlx, ptr->win);
 	mlx_destroy_display(ptr->mlx);
 	ft_free_all(ptr->mlx, map, nodes);
-	free(ptr->img);
-	free(ptr->bpp);
-	free(ptr->sl);
-	free(ptr->edn);
-	free(ptr->adr_img);
 	free(ptr);
 	ptr = NULL;
 }

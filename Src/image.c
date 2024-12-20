@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:25:24 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/20 15:35:06 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:32:04 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	set_image(t_libx *ptr, t_map *map, t_point **nodes)
 {
+	int	x0;
+	int	y0;
+
 	(void) map;
 	(void) nodes;
-	ptr->adr_img = mlx_get_data_addr(ptr->img, ptr->bpp, ptr->sl, ptr->edn);
+	x0 = 0;
+	y0 = 0;
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, x0, y0);
 }

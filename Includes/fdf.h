@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/20 15:52:32 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:12:33 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_libx
 	void	*mlx;
 	void	*win;
 	void	*img;
-	int		*bpp;
-	int		*sl;
-	int		*edn;
-	char	*adr_img;
+	int		bpp;
+	int		sl;
+	int		edn;
+	int		*image;
 }	t_libx;
 
 typedef struct s_map

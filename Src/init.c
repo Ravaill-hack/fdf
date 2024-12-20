@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/20 16:09:40 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:13:18 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,8 @@ t_libx	*init_ptr(t_map *map)
 	tab = (t_libx *)malloc(sizeof(t_libx));
 	tab->mlx = mlx_init();
 	tab->win = mlx_new_window(tab->mlx, map->win_x, map->win_y, "Test");
-	//tab->img = mlx_new_image(tab->mlx, map->win_x, map->win_y);
-	//tab->adr_img = mlx_get_data_addr(tab->img, tab->bpp, tab->sl, tab->edn);
-	tab->img = NULL;
-	tab->adr_img = NULL;
-	tab->bpp = NULL;
-	tab->sl = NULL;
-	tab->edn = NULL;
+	tab->img = mlx_new_image(tab->mlx, map->win_x, map->win_y);
+	tab->image = (int *)mlx_get_data_addr(tab->img, &tab->bpp, &tab->sl, &tab->edn);
 	return (tab);
 }
 
