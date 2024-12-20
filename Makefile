@@ -8,7 +8,7 @@ LIBMLX_DIR = ./Includes/minilibx-linux
 
 LIBFT = -L $(LIBFT_DIR) -lft
 
-LIBMLX = -L $(LIBMLX_DIR) -lmlx -lXext -lX11
+LIBMLX = -L $(LIBMLX_DIR) -lmlx -lXext -lX11 -lm
 
 SRCS_DIR = Src
 
@@ -29,6 +29,7 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/color.c \
 	$(SRCS_DIR)/trigo.c \
 	$(SRCS_DIR)/move.c \
+	$(SRCS_DIR)/image.c \
 	$(SRCS_DIR)/zoom.c \
 	$(SRCS_DIR)/set_nodes.c
 

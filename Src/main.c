@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 16:42:45 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:08:16 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,20 @@ Fonctions de debuggage :
 
 int	main(int argc, char **argv)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	t_libx	*ptr;
 	t_map	*map;
 	t_point	**nodes;
 
 	if (argc == 2)
 	{
 		map = get_map(argv[1]);
-		mlx_ptr = mlx_init();
-		win_ptr = mlx_new_window(mlx_ptr, map->win_x, map->win_y, "Test");
-		nodes = create_list(map, mlx_ptr, win_ptr);
+		ptr = init_ptr(map);
+		nodes = create_list(map, ptr->mlx, ptr->win);
 		set_points(map, nodes);
+		//set_image(ptr, map, nodes);
 		lines(*nodes);
-		mlx_key_hook(win_ptr, do_sth, (void *)(nodes));
-		mlx_loop(mlx_ptr);
-		mlx_destroy_window(mlx_ptr, win_ptr);
-		mlx_destroy_display(mlx_ptr);
-		ft_free_all(mlx_ptr, map, nodes);
+		mlx_key_hook(ptr->win, do_sth, (void *)(nodes));
+		mlx_loop(ptr->mlx);
+		finish_process(ptr, map, nodes);
 	}
 }

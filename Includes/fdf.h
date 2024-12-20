@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/19 17:37:55 by lmatkows         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:52:32 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@
 # include "libft/Includes/libft.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
+
+typedef struct s_libx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	int		*bpp;
+	int		*sl;
+	int		*edn;
+	char	*adr_img;
+}	t_libx;
 
 typedef struct s_map
 {
@@ -75,6 +86,7 @@ void	print_info_map(t_map *map);
 	Fonctions pour initialiser le projet
 */
 t_point	*init_param(void *mlx_ptr, void *win_ptr);
+t_libx	*init_ptr(t_map *map);
 char	*get_title(char *path);
 /*
 	Fonctions pour parser la carte
@@ -96,6 +108,10 @@ void	find_neighbours(t_map *map, t_point **points);
 int		ext_col_up(char *str, int i);
 int		ext_col_low(char *str, int i);
 int		ext_col(char *str);
+/*
+	Fonctions pour creer l'image
+*/
+void	set_image(t_libx *ptr, t_map *map, t_point **nodes);
 /*
 	Fonctions pour modifier l'affichage des noeuds
 */
@@ -134,5 +150,6 @@ void	ft_free_tab_c(char **str);
 void	ft_free_tab_i(t_map *map);
 void	ft_free_nodes(t_point **nodes);
 void	ft_free_all(void *p_mlx, t_map *map, t_point **nodes);
+void	finish_process(t_libx *ptr, t_map *map, t_point **nodes);
 
 #endif
