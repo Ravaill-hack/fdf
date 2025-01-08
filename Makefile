@@ -20,17 +20,12 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/free_utils.c \
 	$(SRCS_DIR)/init.c \
 	$(SRCS_DIR)/events.c \
-	$(SRCS_DIR)/parsing.c \
-	$(SRCS_DIR)/init_nodes.c \
 	$(SRCS_DIR)/utils.c \
-	$(SRCS_DIR)/info.c \
+	$(SRCS_DIR)/debug.c \
 	$(SRCS_DIR)/lst_utils.c \
-	$(SRCS_DIR)/neighbours.c \
 	$(SRCS_DIR)/color.c \
-	$(SRCS_DIR)/trigo.c \
-	$(SRCS_DIR)/move.c \
+	$(SRCS_DIR)/color_deg.c \
 	$(SRCS_DIR)/image.c \
-	$(SRCS_DIR)/zoom.c \
 	$(SRCS_DIR)/set_nodes.c
 
 OBJS = $(SRCS_FILES:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)

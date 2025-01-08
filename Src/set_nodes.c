@@ -6,44 +6,87 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:30:33 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/20 14:47:50 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:27:02 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
-void	set_points(t_map *map, t_point **points)
+void	ft_set_alt(t_var *var, double fact)
 {
-	int		i;
-	int		t;
-	int		zo;
-	double	zz;
-	t_point	*l;
+	t_point *node;
 
-	i = 0;
-	t = 0;
-	l = *points;
-	zo = set_default_zoom(map);
-	zz = set_default_zz(map);
-	while (i < ((map->size_y) * (map->size_x)))
+	node = *(var->map->point);
+	while (node != NULL)
 	{
-		t = l->xp;
-		l->xp = x_off(map, zo) + zo * ((t - l->yp) * 0.866);
-		l->yp = y_off(map, zo) + zo * ((t + l->yp) * 0.5) - (int)(zz * l->z);
-		l = get_current(l);
-		i++;
+		node->z = (int)(fact * node->z0);
+		node = get_next(node);
 	}
 }
 
-void	set_zoom(t_point **points, double zoom)
+void	ft_set_zoom(t_var *var, double zoom)
 {
-	t_point	*l;
+	t_point *node;
 
-	l = *points;
-	while (l)
+	node = *(var->map->point);
+	while (node != NULL)
 	{
-		l->xp = (int)(zoom * l->xp);
-		l->yp = (int)(zoom * l->yp);
-		l = get_current(l);
+		node->x = (int)(node->x0 * zoom);
+		node->y = (int)(node->y0 * zoom);
+		node = get_next(node);
 	}
+}
+
+void	ft_set_offset(t_var *var, int x_off, int y_off)
+{
+	t_point *node;
+
+	node = *(var->map->point);
+	while (node != NULL)
+	{
+		node->x = (node->x + x_off);
+		node->y = (node->y + y_off);
+		node = get_next(node);
+	}
+}
+
+int	ft_set_rot(t_var *var, int ax, int ay, int az)
+{
+	t_point *node;
+	double	rx;
+	double	ry;
+	double	rz;
+	int		temp;
+
+	rx = ax * PI / 180;
+	ry = ay * PI / 180;
+	rz = az * PI / 180;	
+	//rotation de rz autour de z
+	node = *(var->map->point);
+	while (node != NULL)
+	{
+		temp = node->x;
+		node->x = (int)(temp * cos(rz) - node->y * sin(rz));
+		node->y = (int)(temp * sin(rz) + node->y * cos(rz));
+		node = get_next(node);
+	}
+	//rotation de ry autour de y
+	node = *(var->map->point);
+	while (node != NULL)
+	{
+		temp = node->x;
+		node->x = (int)(temp * cos(ry) + node->z * sin(ry));
+		node->z = (int)(temp * sin(ry) + node->z * cos(ry));
+		node = get_next(node);
+	}
+	//rotation de rz autour de x
+	node = *(var->map->point);
+	while (node != NULL)
+	{
+		temp = node->y;
+		node->y = (int)(temp * cos(rx) - node->z * sin(rx));
+		node->z = (int)(temp * sin(rx) + node->z * cos(rx));
+		node = get_next(node);
+	}
+	return (0);
 }
