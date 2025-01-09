@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:25:47 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/22 20:59:41 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:09:08 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
-
-t_point	*ft_lst_last(t_point *nodes)
-{
-	while (nodes && nodes->next)
-		nodes = nodes->next;
-	return (nodes);
-}
 
 t_point	*ft_new_node(char *str, int i, int j)
 {
@@ -81,4 +74,28 @@ t_point	*find_lft(t_point *point, t_point *first)
 		first = first->next;
 	}
 	return (NULL);
+}
+
+int	lst_create_n_add(t_point **nodes, char *l, int j)
+{
+	char	**s_l;
+	int		nb_val;
+	int		i;
+
+	nb_val = 0;
+	i = 0;
+	s_l = ft_split(l, ' ');
+	if (!s_l)
+	{
+		ft_putstr_fd("Error : line split failed", 2);
+		return (-1);
+	}
+	nb_val = ft_count_words(s_l) - 1;
+	while (i < nb_val)
+	{
+		ft_lst_add_right(nodes, ft_new_node(s_l[i], i, j));
+		i++;
+	}
+	ft_free_tab_c(s_l);
+	return (nb_val);
 }

@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 10:58:21 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:05:32 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ typedef struct s_col
 	Fonctions auxiliaires
 */
 char	*get_title(const char *path);
-t_point	*ft_lst_last(t_point *nodes);
 int		ft_count_words(char **str);
 t_point	*get_next(t_point *node);
+t_point	*ft_lst_last(t_point *nodes);
 char	*ft_hex_itoa(int col, char *base);
 int		find_i(char c, char *base);
 /*

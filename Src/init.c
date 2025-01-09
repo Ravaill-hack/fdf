@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 10:45:47 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:01:36 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,28 +103,4 @@ void	get_map(t_map *map, const char *path)
 	map->size_y = j;
 	map->title = get_title(path);
 	map->path = ft_strdup(path);
-}
-
-int	lst_create_n_add(t_point **nodes, char *l, int j)
-{
-	char	**s_l;
-	int		nb_val;
-	int		i;
-
-	nb_val = 0;
-	i = 0;
-	s_l = ft_split(l, ' ');
-	if (!s_l)
-	{
-		ft_putstr_fd("Error : line split failed", 2);
-		return (-1);
-	}
-	nb_val = ft_count_words(s_l) - 1;
-	while (i < nb_val)
-	{
-		ft_lst_add_right(nodes, ft_new_node(s_l[i], i, j));
-		i++;
-	}
-	ft_free_tab_c(s_l);
-	return (nb_val);
 }

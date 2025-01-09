@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:25:53 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 10:44:25 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 11:36:40 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ int	draw_line(t_var *var, t_point *p1, t_point *p2)
 void	draw_vertical_line(t_var *var, t_point *p1, t_point *p2)
 {
 	int	y0;
+	int	d;
 
 	y0 = p1->y;
 	while (y0 != p2->y)
 	{
-		draw_point(var, p1->x, y0, ft_col(p1->col, p2->col, p2->y - p1->y, abs(y0 - (p1->y))));
+		d = abs(y0 - (p1->y));
+		draw_point(var, p1->x, y0, ft_col(p1->col, p2->col, p2->y - p1->y, d));
 		if (p1->y > p2->y)
 			y0--;
 		else
@@ -57,11 +59,13 @@ void	draw_vertical_line(t_var *var, t_point *p1, t_point *p2)
 void	draw_horizontal_line(t_var *var, t_point *p1, t_point *p2)
 {
 	int	x0;
+	int	d;
 
 	x0 = p1->x;
 	while (x0 != p2->x)
 	{
-		draw_point(var, x0, p1->y, ft_col(p1->col, p2->col, p2->x - p1->x, abs(x0 - (p1->x))));
+		d = abs(x0 - (p1->x));
+		draw_point(var, x0, p1->y, ft_col(p1->col, p2->col, p2->x - p1->x, d));
 		if (p1->x > p2->x)
 			x0--;
 		else
