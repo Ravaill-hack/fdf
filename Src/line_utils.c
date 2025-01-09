@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:25:53 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/07 18:02:48 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:44:25 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	draw_line(t_var *var, t_point *p1, t_point *p2)
 {
 	int		dx;
 	int		dy;
-	double	slope;
+	float	slope;
 
 	if (p1->x == p2->x)
 	{
@@ -30,11 +30,11 @@ int	draw_line(t_var *var, t_point *p1, t_point *p2)
 	}
 	dx = p2->x - p1->x;
 	dy = p2->y - p1->y;
-	slope = ((double)dy) / ((double)dx);
+	slope = ((float)dy) / ((float)dx);
 	if (slope < 1.0 && slope > -1.0)
-		draw_other_line(var, p1, p2, dx, dy);
+		draw_oth_line(var, p1, p2, dx, dy);
 	else
-		draw_other_line_rev(var, p1, p2, dx, dy);
+		draw_oth_line_rev(var, p1, p2, dx, dy);
 	return (0);
 }
 
@@ -70,7 +70,7 @@ void	draw_horizontal_line(t_var *var, t_point *p1, t_point *p2)
 	draw_point(var, p1->x, p1->y, ft_col(p1->col, p2->col, p2->x - p1->x, abs(x0 - (p1->x))));
 }
 
-void	draw_other_line(t_var *var, t_point *p1, t_point *p2, int dx, int dy)
+void	draw_oth_line(t_var *var, t_point *p1, t_point *p2, int dx, int dy)
 {
 	t_line	l;
 
@@ -98,7 +98,7 @@ void	draw_other_line(t_var *var, t_point *p1, t_point *p2, int dx, int dy)
 	}
 }
 
-void	draw_other_line_rev(t_var *var, t_point *p1, t_point *p2, int dx, int dy)
+void	draw_oth_line_rev(t_var *var, t_point *p1, t_point *p2, int dx, int dy)
 {
 	t_line	l;
 

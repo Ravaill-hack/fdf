@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/24 14:42:31 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:45:47 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_img	*init_img(void *mlx_p)
 
 t_att	init_att(void)
 {
-	t_att att;
+	t_att	att;
 
 	att.ang_x = 0;
 	att.ang_y = 0;

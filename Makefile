@@ -26,6 +26,7 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/color.c \
 	$(SRCS_DIR)/color_deg.c \
 	$(SRCS_DIR)/image.c \
+	$(SRCS_DIR)/rotate.c \
 	$(SRCS_DIR)/set_nodes.c
 
 OBJS = $(SRCS_FILES:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)

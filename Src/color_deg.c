@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:02:30 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/08 15:34:32 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:45:24 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ int	ft_col(int col1, int col2, int delt, int i)
 {
 	t_col	col;
 
-	if (col1 == col2)
+	if (col1 == col2 || delt == 0)
 	{
 		(void) delt;
 		(void) i;
 		return (col1);
 	}
 	col.colh1 = ft_hex_itoa(col1, "0123456789abcdef");
-	col.R01 = extract_red(col.colh1, "0123456789abcdef");
-	col.G01 = extract_green(col.colh1, "0123456789abcdef");
-	col.B01 = extract_blue(col.colh1, "0123456789abcdef");
+	col.r01 = extract_red(col.colh1, "0123456789abcdef");
+	col.g01 = extract_green(col.colh1, "0123456789abcdef");
+	col.b01 = extract_blue(col.colh1, "0123456789abcdef");
 	col.colh2 = ft_hex_itoa(col2, "0123456789abcdef");
-	col.R02 = extract_red(col.colh2, "0123456789abcdef");
-	col.G02 = extract_green(col.colh2, "0123456789abcdef");
-	col.B02 = extract_blue(col.colh2, "0123456789abcdef");
-	col.R = col.R01 + ((col.R02 - col.R01) / abs(delt)) * i;
-	col.G = col.G01 + ((col.G02 - col.G01) / abs(delt)) * i;
-	col.B = col.B01 + ((col.B02 - col.B01) / abs(delt)) * i;
+	col.r02 = extract_red(col.colh2, "0123456789abcdef");
+	col.g02 = extract_green(col.colh2, "0123456789abcdef");
+	col.b02 = extract_blue(col.colh2, "0123456789abcdef");
+	col.r = col.r01 + ((col.r02 - col.r01) / abs(delt)) * i;
+	col.g = col.g01 + ((col.g02 - col.g01) / abs(delt)) * i;
+	col.b = col.b01 + ((col.b02 - col.b01) / abs(delt)) * i;
 	free(col.colh1);
 	free(col.colh2);
-	return (col.R * 65280 + col.G * 255 + col.B);
+	return (col.r * 65280 + col.g * 255 + col.b);
 }
 
 int	extract_red(char *col, char *base)

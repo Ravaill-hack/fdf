@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/08 11:57:19 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:56:52 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ int	do_sth(int keyc, t_var *var)
 	if (keyc == 65362 || keyc == 65364 || keyc == 65361 || keyc == 65363)
 		ft_trans(var, keyc);
 	return (0);
-}
-
-void	ft_close_aff(t_var *var)
-{
-	mlx_destroy_image(var->mlx_p, var->img->im_p);
-	mlx_destroy_window(var->mlx_p, var->win_p);
-	mlx_destroy_display(var->mlx_p);
 }
 
 int	ft_rot(t_var *var, int keyc)

@@ -1,59 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_nodes.c                                        :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 09:30:33 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 10:58:57 by lmatkows         ###   ########.fr       */
+/*   Created: 2025/01/09 10:53:33 by lmatkows          #+#    #+#             */
+/*   Updated: 2025/01/09 10:55:49 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
-void	ft_set_alt(t_var *var, float fact)
+int	ft_rotate_z(t_var *var, int az)
 {
 	t_point	*node;
+	float	rz;
+	int		temp;
 
+	rz = az * PI / 180;
 	node = *(var->map->point);
 	while (node != NULL)
 	{
-		node->z = (int)(fact * node->z0);
+		temp = node->x;
+		node->x = (int)(temp * cos(rz) - node->y * sin(rz));
+		node->y = (int)(temp * sin(rz) + node->y * cos(rz));
 		node = get_next(node);
 	}
+	return (0);
 }
 
-void	ft_set_zoom(t_var *var, float zoom)
+int	ft_rotate_y(t_var *var, int ay)
 {
 	t_point	*node;
+	float	ry;
+	int		temp;
 
+	ry = ay * PI / 180;
 	node = *(var->map->point);
 	while (node != NULL)
 	{
-		node->x = (int)(node->x0 * zoom);
-		node->y = (int)(node->y0 * zoom);
+		temp = node->x;
+		node->x = (int)(temp * cos(ry) + node->z * sin(ry));
+		node->z = (int)(temp * sin(ry) + node->z * cos(ry));
 		node = get_next(node);
 	}
+	return (0);
 }
 
-void	ft_set_offset(t_var *var, int x_off, int y_off)
+int	ft_rotate_x(t_var *var, int ax)
 {
 	t_point	*node;
+	float	rx;
+	int		temp;
 
+	rx = ax * PI / 180;
 	node = *(var->map->point);
 	while (node != NULL)
 	{
-		node->x = (node->x + x_off);
-		node->y = (node->y + y_off);
+		temp = node->y;
+		node->y = (int)(temp * cos(rx) - node->z * sin(rx));
+		node->z = (int)(temp * sin(rx) + node->z * cos(rx));
 		node = get_next(node);
 	}
-}
-
-int	ft_set_rot(t_var *var, int ax, int ay, int az)
-{
-	ft_rotate_z (var, az);
-	ft_rotate_y (var, ay);
-	ft_rotate_x (var, ax);
 	return (0);
 }

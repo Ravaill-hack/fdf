@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 15:25:24 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/08 15:24:21 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:04:55 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	init_image(t_var *var)
 {
-	double	zoomx;
-	double	zoomy;
-	double	zoom;
-	double	deltx;
+	float	zoomx;
+	float	zoomy;
+	float	zoom;
+	float	deltx;
 
-	deltx = (double)var->map->size_x * 0.5 + (double)var->map->size_y * 0.866;
-	zoomx = ((double)X_WIN) / deltx;
-	zoomy = ((double)Y_WIN) / ((double)var->map->size_x);
+	deltx = (float)(var->map->size_x * 0.5) + (float)(var->map->size_y * 0.866);
+	zoomx = ((float)X_WIN) / deltx;
+	zoomy = ((float)Y_WIN) / ((float)var->map->size_x);
 	if (zoomx > zoomy)
 		zoom = zoomy;
 	else
