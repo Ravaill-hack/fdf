@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:26:20 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/07 17:12:27 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:29:39 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_count_words(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i] != NULL)
+	while (str[i] != NULL && str[i][0] != '\n')
 		i++;
-	return (i);
+	return (i + 1);
 }
 
 char	*get_title(const char *path)
