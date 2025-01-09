@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 11:05:32 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:24:19 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,8 @@ int		ft_zoom(t_var *var, int keyc);
 int		draw_line(t_var *var, t_point *p1, t_point *p2);
 void	draw_vertical_line(t_var *var, t_point *p1, t_point *p2);
 void	draw_horizontal_line(t_var *var, t_point *p1, t_point *p2);
-void	draw_oth_line(t_var *var, t_point *p1, t_point *p2, int dx, int dy);
-void	draw_oth_line_rev(t_var *var, t_point *p1, t_point *p2, int dx, int dy);
+void	draw_oth_line(t_var *var, t_point *p1, t_point *p2, int dxy[2]);
+void	draw_oth_line_rev(t_var *var, t_point *p1, t_point *p2, int dxy[2]);
 void	draw_point(t_var *var, int x, int y, int col);
 int		ft_col(int col1, int col2, int delt, int i);
 int		extract_red(char *col, char *base);

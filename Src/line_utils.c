@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:25:53 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 11:36:40 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:24:04 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	draw_line(t_var *var, t_point *p1, t_point *p2)
 {
-	int		dx;
-	int		dy;
+	int		dxy[2];
 	float	slope;
 
 	if (p1->x == p2->x)
@@ -28,13 +27,13 @@ int	draw_line(t_var *var, t_point *p1, t_point *p2)
 		draw_horizontal_line(var, p1, p2);
 		return (0);
 	}
-	dx = p2->x - p1->x;
-	dy = p2->y - p1->y;
-	slope = ((float)dy) / ((float)dx);
+	dxy[0] = p2->x - p1->x;
+	dxy[1] = p2->y - p1->y;
+	slope = ((float)(dxy[1])) / ((float)(dxy[0]));
 	if (slope < 1.0 && slope > -1.0)
-		draw_oth_line(var, p1, p2, dx, dy);
+		draw_oth_line(var, p1, p2, dxy);
 	else
-		draw_oth_line_rev(var, p1, p2, dx, dy);
+		draw_oth_line_rev(var, p1, p2, dxy);
 	return (0);
 }
 
@@ -53,7 +52,8 @@ void	draw_vertical_line(t_var *var, t_point *p1, t_point *p2)
 		else
 			y0++;
 	}
-	draw_point(var, p1->x, p1->y, ft_col(p1->col, p2->col, p2->y - p1->y, abs(y0 - (p1->y))));
+	d = abs(y0 - (p1->y));
+	draw_point(var, p1->x, p1->y, ft_col(p1->col, p2->col, p2->y - p1->y, d));
 }
 
 void	draw_horizontal_line(t_var *var, t_point *p1, t_point *p2)
@@ -71,61 +71,62 @@ void	draw_horizontal_line(t_var *var, t_point *p1, t_point *p2)
 		else
 			x0++;
 	}
-	draw_point(var, p1->x, p1->y, ft_col(p1->col, p2->col, p2->x - p1->x, abs(x0 - (p1->x))));
+	d = abs(x0 - (p1->x));
+	draw_point(var, p1->x, p1->y, ft_col(p1->col, p2->col, p2->x - p1->x, d));
 }
 
-void	draw_oth_line(t_var *var, t_point *p1, t_point *p2, int dx, int dy)
+void	draw_oth_line(t_var *var, t_point *p1, t_point *p2, int dxy[2])
 {
 	t_line	l;
 
 	l.i = -1;
-	l.p = 2 * abs(dy) - abs(dx);
+	l.p = 2 * abs(dxy[1]) - abs(dxy[0]);
 	l.x0 = p1->x;
 	l.y0 = p1->y;
-	while (++l.i <= abs(dx))
+	while (++l.i <= abs(dxy[0]))
 	{
-		draw_point(var, l.x0, l.y0, ft_col(p1->col, p2->col, dx, l.i));
-		if (dx > 0)
+		draw_point(var, l.x0, l.y0, ft_col(p1->col, p2->col, dxy[0], l.i));
+		if (dxy[0] > 0)
 			l.x0 += 1;
 		else
 			l.x0 -= 1;
 		if (l.p < 0)
-			l.p = l.p + 2 * abs(dy);
+			l.p = l.p + 2 * abs(dxy[1]);
 		else
 		{
-			if (dy > 0)
+			if (dxy[1] > 0)
 				l.y0 += 1;
 			else
 				l.y0 -= 1;
-			l.p = l.p + 2 * abs(dy) - 2 * abs(dx);
+			l.p = l.p + 2 * abs(dxy[1]) - 2 * abs(dxy[0]);
 		}
 	}
 }
 
-void	draw_oth_line_rev(t_var *var, t_point *p1, t_point *p2, int dx, int dy)
+void	draw_oth_line_rev(t_var *var, t_point *p1, t_point *p2, int dxy[2])
 {
 	t_line	l;
 
 	l.i = -1;
-	l.p = 2 * abs(dy) - abs(dx);
+	l.p = 2 * abs(dxy[1]) - abs(dxy[0]);
 	l.x0 = p1->x;
 	l.y0 = p1->y;
-	while (++l.i < abs(dy))
+	while (++l.i < abs(dxy[1]))
 	{
-		draw_point(var, l.x0, l.y0, ft_col(p1->col, p2->col, dy, l.i));
-		if (dy > 0)
+		draw_point(var, l.x0, l.y0, ft_col(p1->col, p2->col, dxy[1], l.i));
+		if (dxy[1] > 0)
 			l.y0 += 1;
 		else
 			l.y0 -= 1;
 		if (l.p < 0)
-			l.p = l.p + 2 * abs(dx);
+			l.p = l.p + 2 * abs(dxy[0]);
 		else
 		{
-			if (dx > 0)
+			if (dxy[0] > 0)
 				l.x0 += 1;
 			else
 				l.x0 -= 1;
-			l.p = l.p + 2 * abs(dx) - 2 * abs(dy);
+			l.p = l.p + 2 * abs(dxy[0]) - 2 * abs(dxy[1]);
 		}
 	}
 }

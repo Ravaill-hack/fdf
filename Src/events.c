@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 10:56:52 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:16:44 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	do_sth(int keyc, t_var *var)
 	ft_printf("%d\n", keyc);
 	if (keyc == 65307)
 		ft_close_n_free(var);
-	if (keyc == 113 || keyc == 119 || keyc == 97 || keyc == 115 || keyc == 122 || keyc == 120)
+	if (keyc == 113 || keyc == 119 || keyc == 97 || keyc == 115
+		|| keyc == 122 || keyc == 120)
 		ft_rot(var, keyc);
 	if (keyc == 111 || keyc == 112)
 		ft_zoom(var, keyc);
