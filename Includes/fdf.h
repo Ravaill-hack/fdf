@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 12:24:19 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:28:00 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FDF_H
 # define X_WIN 1400
 # define Y_WIN 900
-# define PI (float)3.14159265358979323846
+# define PI 3.14159265358979323846f
 
 # include <unistd.h>
 # include <stdlib.h>

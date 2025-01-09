@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 12:16:44 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:28:31 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	do_sth(int keyc, t_var *var)
 {
-	ft_printf("%d\n", keyc);
 	if (keyc == 65307)
 		ft_close_n_free(var);
 	if (keyc == 113 || keyc == 119 || keyc == 97 || keyc == 115
