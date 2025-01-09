@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 09:43:38 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/08 15:34:40 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:02:28 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ext_col_up(char *str, int ind)
 	return (nb);
 }
 
-int	ext_col(char *str)
+int	ext_col(char *str, t_map *map)
 {
 	int	i;
 	int	start;
@@ -52,6 +52,7 @@ int	ext_col(char *str)
 		return (0xFFFFFF);
 	else
 	{
+		map->is_col = 1;
 		i = 0;
 		while (i <= 5 && str[start + i] != '\0')
 		{

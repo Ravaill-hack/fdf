@@ -6,13 +6,13 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:25:47 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 16:37:40 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:00:42 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
 
-t_point	*ft_new_node(char *str, int i, int j)
+t_point	*ft_new_node(char *str, int i, int j, t_map *map)
 {
 	t_point	*node;
 
@@ -28,7 +28,7 @@ t_point	*ft_new_node(char *str, int i, int j)
 	node->x0 = node->x;
 	node->y0 = node->y;
 	node->z0 = node->z;
-	node->col = ext_col(str);
+	node->col = ext_col(str, map);
 	node->next = NULL;
 	node->up = NULL;
 	node->lft = NULL;
@@ -93,7 +93,7 @@ int	lst_create_n_add(t_map *map, char *l, int j)
 	nb_val = ft_count_words(s_l) - 1;
 	while (i < nb_val)
 	{
-		ft_lst_add_right(map->point, ft_new_node(s_l[i], i, j));
+		ft_lst_add_right(map->point, ft_new_node(s_l[i], i, j, map));
 		i++;
 	}
 	ft_free_tab_c(s_l);

@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 16:37:15 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:01:13 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,13 @@ t_att	init_att(void);
 */
 void	get_map(t_map *map, const char *path);
 int		lst_create_n_add(t_map *map, char *l, int j);
-t_point	*ft_new_node(char *str, int i, int j);
+t_point	*ft_new_node(char *str, int i, int j, t_map *map);
 void	ft_lst_add_right(t_point **nodes, t_point *elem);
 t_point	*find_up(t_point *point, t_point *first);
 t_point	*find_lft(t_point *point, t_point *first);
 int		ext_col_up(char *str, int i);
 int		ext_col_low(char *str, int i);
-int		ext_col(char *str);
+int		ext_col(char *str, t_map *map);
 /*
 	Fonctions gerer l'image
 */
