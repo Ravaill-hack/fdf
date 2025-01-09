@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT_DIR = ./Includes/libft
 
-LIBMLX_DIR = ./Includes/minilibx-linux
+LIBMLX_DIR = ./Includes/.minilibx-linux
 
 LIBFT = -L $(LIBFT_DIR) -lft
 
@@ -31,10 +31,13 @@ SRCS_FILES =  \
 
 OBJS = $(SRCS_FILES:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
-all: $(LIBFT) $(NAME)
+all: $(LIBFT) $(LIBMLX) $(NAME)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
+
+$(LIBMLX):
+	@$(MAKE) -C $(LIBMLX_DIR)
 
 $(NAME):$(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBMLX) $(LIBFT)
@@ -46,6 +49,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 clean:
 	rm -f $(OBJS)
 	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(MAKE) clean -C $(LIBMLX_DIR)
 
 fclean: clean
 	rm -f $(NAME)

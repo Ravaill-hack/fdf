@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 12:28:00 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:10:24 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include "minilibx-linux/mlx.h"
+# include ".minilibx-linux/mlx.h"
 # include "libft/Includes/libft.h"
 
 typedef struct s_att
