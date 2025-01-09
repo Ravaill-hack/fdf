@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 11:01:36 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:38:13 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	get_map(t_map *map, const char *path)
 	j = -1;
 	fd = open(path, O_RDONLY);
 	line = NULL;
+	map->is_col = 0;
 	while (line != NULL || j == -1)
 	{
 		free(line);
@@ -95,9 +96,9 @@ void	get_map(t_map *map, const char *path)
 		if (line == NULL)
 			break ;
 		if (j == 0)
-			map->size_x = lst_create_n_add(map->point, line, j);
+			map->size_x = lst_create_n_add(map, line, j);
 		else
-			lst_create_n_add(map->point, line, j);
+			lst_create_n_add(map, line, j);
 	}
 	close (fd);
 	map->size_y = j;

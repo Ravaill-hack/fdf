@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:08:15 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 12:28:31 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:44:28 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ int	ft_rot(t_var *var, int keyc)
 {
 	ft_clear_image(var);
 	if (keyc == 113)
-		var->att.ang_x += 2;
+		var->att.ang_x += 3;
 	if (keyc == 119)
-		var->att.ang_x -= 2;
+		var->att.ang_x -= 3;
 	if (keyc == 97)
-		var->att.ang_y += 2;
+		var->att.ang_y += 3;
 	if (keyc == 115)
-		var->att.ang_y -= 2;
+		var->att.ang_y -= 3;
 	if (keyc == 122)
-		var->att.ang_z += 2;
+		var->att.ang_z += 3;
 	if (keyc == 120)
-		var->att.ang_z -= 2;
+		var->att.ang_z -= 3;
 	ft_set_image(var);
 	return (0);
 }

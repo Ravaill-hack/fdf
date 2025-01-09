@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:25:47 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 11:09:08 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:37:40 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_point	*find_lft(t_point *point, t_point *first)
 	return (NULL);
 }
 
-int	lst_create_n_add(t_point **nodes, char *l, int j)
+int	lst_create_n_add(t_map *map, char *l, int j)
 {
 	char	**s_l;
 	int		nb_val;
@@ -93,7 +93,7 @@ int	lst_create_n_add(t_point **nodes, char *l, int j)
 	nb_val = ft_count_words(s_l) - 1;
 	while (i < nb_val)
 	{
-		ft_lst_add_right(nodes, ft_new_node(s_l[i], i, j));
+		ft_lst_add_right(map->point, ft_new_node(s_l[i], i, j));
 		i++;
 	}
 	ft_free_tab_c(s_l);
