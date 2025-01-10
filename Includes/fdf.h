@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:10:07 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 17:01:13 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:01:16 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_map
 	int		size_x;
 	int		size_y;
 	int		is_col;
+	int		z_min;
+	int		z_max;
 }	t_map;
 
 typedef struct s_img

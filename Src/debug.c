@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 11:51:16 by Lmatkows          #+#    #+#             */
-/*   Updated: 2024/12/22 17:32:06 by Lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:09:00 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ void	print_info_map(t_map *map)
 	ft_printf("path : %s\n", map->path);
 	ft_printf("y size : %d\n", map->size_y);
 	ft_printf("x size : %d\n", map->size_x);
+	ft_printf("z min : %d\n", map->z_min);
+	ft_printf("z max : %d\n", map->z_max);
+	ft_printf("is col : %d\n", map->is_col);
 	print_info_list(*(map->point));
 }

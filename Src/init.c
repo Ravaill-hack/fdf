@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 16:38:13 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:00:13 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ t_map	*init_map(const char *path)
 	if (!map->point)
 		return (NULL);
 	*(map->point) = NULL;
+	map->z_min = 2147483646;
+	map->z_max = -2147483647;
 	get_map(map, path);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 14:25:47 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 17:00:42 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:05:02 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ t_point	*ft_new_node(char *str, int i, int j, t_map *map)
 	node->next = NULL;
 	node->up = NULL;
 	node->lft = NULL;
+	if (node->z > map->z_max)
+		map->z_max = node->z;
+	if (node->z < map->z_min)
+		map->z_min = node->z;
 	return (node);
 }
 
