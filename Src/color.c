@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 09:43:38 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 17:02:28 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/10 16:37:56 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,78 @@ int	ext_col(char *str, t_map *map)
 		}
 	}
 	return (0xFFFFFF);
+}
+
+void ft_find_col(t_map	*map, t_point *p)
+{
+	int		delt_z;
+	int		z0;
+	float	rz;
+
+	delt_z = map->z_max - map->z_min;
+	z0 = p->z - map->z_min;
+	rz = 0;
+	if (map->z_min == map->z_max)
+		return ;
+	else if (p->z == map->z_min)
+	{
+		p->col = 255;
+		return ;
+	}
+	else if (p->z == map->z_max)
+	{
+		p->col = 16711680;
+		return ;
+	}
+	rz = (p->z / delt_z);
+	if (rz < (float)0.25)
+		p->col = ft_deg_bc(rz);
+	else if ((float)0.25 <= rz && rz < (float)0.5)
+		p->col = ft_deg_cv(rz);
+	else if ((float)0.5 <= rz && rz < (float)0.75)
+		p->col = ft_deg_vj(rz);
+	else
+		p->col = ft_deg_jr(rz);
+}
+
+int	ft_deg_bc(float rz)
+{
+	int	res;
+
+	(void) rz;
+	res = 0;
+	return (res);
+}
+
+int	ft_deg_cv(float rz)
+{
+	int	res;
+
+	(void) rz;
+	res = 0;
+	if (rz == 0.25)
+		return (65535);
+	return (res);
+}
+
+int	ft_deg_vj(float rz)
+{
+	int	res;
+
+	(void) rz;
+	res = 0;
+	if (rz == 0.5)
+		return (65280);
+	return (res);
+}
+
+int	ft_deg_jr(float rz)
+{
+	int	res;
+
+	(void) rz;
+	res = 0;
+	if (rz == 0.75)
+		return (16776960);
+	return (res);
 }
