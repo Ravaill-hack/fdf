@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 13:02:30 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/11 14:07:05 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:35:32 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	ft_col(int col1, int col2, int delt, int i)
 	col.r02 = extract_red(col.colh2, "0123456789abcdef");
 	col.g02 = extract_green(col.colh2, "0123456789abcdef");
 	col.b02 = extract_blue(col.colh2, "0123456789abcdef");
-	col.r = col.r01 + ((col.r02 - col.r01) / abs(delt)) * i;
-	col.g = col.g01 + ((col.g02 - col.g01) / abs(delt)) * i;
-	col.b = col.b01 + ((col.b02 - col.b01) / abs(delt)) * i;
+	col.r = col.r01 + (float)(((col.r02 - col.r01) / abs(delt)) * i);
+	col.g = col.g01 + (float)(((col.g02 - col.g01) / abs(delt)) * i);
+	col.b = col.b01 + (float)(((col.b02 - col.b01) / abs(delt)) * i);
 	free(col.colh1);
 	free(col.colh2);
-	return (col.r * 65280 + col.g * 255 + col.b);
+	return ((int)(col.r) << 16 | (int)(col.g) << 8 | (int)(col.b));
 }
 
 int	extract_red(char *col, char *base)
@@ -58,6 +58,6 @@ int	extract_blue(char *col, char *base)
 {
 	int	blue;
 
-	blue = 16 * find_i(col[5], base) + find_i(col[5], base);
+	blue = 16 * find_i(col[4], base) + find_i(col[5], base);
 	return (blue);
 }
