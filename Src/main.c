@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/09 16:30:53 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:43:58 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 {
 	t_var	*var;
 
+	ft_put_message();
 	if (argc == 2)
 	{
 		var = init_var(argv[1]);

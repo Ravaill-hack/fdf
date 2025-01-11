@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 09:43:38 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/10 16:37:56 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:51:51 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,20 @@ int	ext_col(char *str, t_map *map)
 	}
 	if (start == 0)
 		return (0xFFFFFF);
-	else
+	map->is_col = 1;
+	i = 0;
+	while (i <= 5 && str[start + i] != '\0')
 	{
-		map->is_col = 1;
-		i = 0;
-		while (i <= 5 && str[start + i] != '\0')
-		{
-			if (ft_strchr("0123456789abcdef", str[start + i]) != NULL)
-				return (ext_col_low(str, start + i));
-			else if (ft_strchr("0123456789ABCDEF", str[start + i]) != NULL)
-				return (ext_col_up(str, start + i));
-			i++;
-		}
+		if (ft_strchr("0123456789abcdef", str[start + i]) != NULL)
+			return (ext_col_low(str, start + i));
+		else if (ft_strchr("0123456789ABCDEF", str[start + i]) != NULL)
+			return (ext_col_up(str, start + i));
+		i++;
 	}
 	return (0xFFFFFF);
 }
 
-void ft_find_col(t_map	*map, t_point *p)
+void	ft_find_col(t_map *map, t_point *p)
 {
 	int		delt_z;
 	int		z0;
@@ -74,19 +71,12 @@ void ft_find_col(t_map	*map, t_point *p)
 
 	delt_z = map->z_max - map->z_min;
 	z0 = p->z - map->z_min;
-	rz = 0;
-	if (map->z_min == map->z_max)
-		return ;
-	else if (p->z == map->z_min)
-	{
+	if (p->z == map->z_min)
 		p->col = 255;
-		return ;
-	}
 	else if (p->z == map->z_max)
-	{
 		p->col = 16711680;
+	if (map->z_min == map->z_max || p->z == map->z_min || p->z == map->z_max)
 		return ;
-	}
 	rz = (p->z / delt_z);
 	if (rz < (float)0.25)
 		p->col = ft_deg_bc(rz);

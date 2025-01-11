@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 11:51:16 by Lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/10 14:09:00 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:43:35 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,22 @@ void	print_info_map(t_map *map)
 	ft_printf("z max : %d\n", map->z_max);
 	ft_printf("is col : %d\n", map->is_col);
 	print_info_list(*(map->point));
+}
+
+void	ft_put_message(void)
+{
+	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("Bienvenue dans FdF, qui va vous permettre d'afficher ", 1);
+	ft_putstr_fd("une carte en 3D.\n\nPour executer le programme il ", 1);
+	ft_putstr_fd("faut rentrer en argument le chemin de la carte a ", 1);
+	ft_putstr_fd("afficher.\n\n Tant que la fenetre est ouverte vous ", 1);
+	ft_putstr_fd("pouvez effectuer plusieurs commandes  :\n - zoomer ou", 1);
+	ft_putstr_fd(" dezoomer avec les touches o et p\n - deplacer la vue", 1);
+	ft_putstr_fd(" avec les fleches du clavier\n - modifier le facteur ", 1);
+	ft_putstr_fd("d'altitude avec les touches k et l\n - tourner autour", 1);
+	ft_putstr_fd(" de l'axe x avec les touches q et w\n - tourner ", 1);
+	ft_putstr_fd("autour de l'axe y avec les touches a et s\n - tourner", 1);
+	ft_putstr_fd(" autour de l'axe z avec les touches z et x\n\n", 1);
+	ft_putstr_fd("Pour quitter le programme appuyer sur ESC ou cliquer", 1);
+	ft_putstr_fd(" sur la croix\n\n", 1);
 }
