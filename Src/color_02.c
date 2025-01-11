@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 09:43:38 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/11 14:07:03 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:08:59 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,16 @@ int	ext_col_up(char *str, int ind)
 	free (raw);
 	raw = NULL;
 	return (nb);
+}
+
+void	set_colors(t_map *map)
+{
+	t_point	*node;
+
+	node = *(map->point);
+	while (node)
+	{
+		ft_find_col(map, node);
+		node = node->next;
+	}
 }

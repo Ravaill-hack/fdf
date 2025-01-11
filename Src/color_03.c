@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 14:06:05 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/11 14:59:21 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:26:15 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_find_col(t_map *map, t_point *p)
 		p->col = 16711680;
 	if (map->z_min == map->z_max || p->z == map->z_min || p->z == map->z_max)
 		return ;
-	rz = (p->z / delt_z);
+	rz = ((float)z0 / (float)delt_z);
 	if (rz < (float)0.25)
 		p->col = ft_deg_bc(rz);
 	else if ((float)0.25 <= rz && rz < (float)0.5)
@@ -66,7 +66,7 @@ int	ft_deg_cv(float rz)
 int	ft_deg_vj(float rz)
 {
 	int	res;
-	int red;
+	int	red;
 
 	if (rz == 0.5)
 		return (65280);
@@ -79,13 +79,13 @@ int	ft_deg_vj(float rz)
 int	ft_deg_jr(float rz)
 {
 	int	res;
-	int green;
+	int	green;
 
 	if (rz == 0.75)
 		return (16776960);
 	if (rz == 1.00)
 		return (16711680);
-	rz = (rz - (float)0.75) / (float)0.25;
+	rz = 1 - (rz - (float)0.75) / (float)0.25;
 	green = 255 - (int)(255 * rz);
 	res = 16776960 - green * 256;
 	return (res);
