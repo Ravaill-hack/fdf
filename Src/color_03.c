@@ -1,67 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   color_03.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 09:43:38 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/11 13:51:51 by lmatkows         ###   ########.fr       */
+/*   Created: 2025/01/11 14:06:05 by lmatkows          #+#    #+#             */
+/*   Updated: 2025/01/11 14:59:21 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/fdf.h"
-
-int	ext_col_low(char *str, int ind)
-{
-	char	*raw;
-	int		nb;
-
-	raw = ft_substr(str, (unsigned)ind, 6);
-	nb = ft_atoi_base(raw, "0123456789abcdef");
-	free (raw);
-	raw = NULL;
-	return (nb);
-}
-
-int	ext_col_up(char *str, int ind)
-{
-	char	*raw;
-	int		nb;
-
-	raw = ft_substr(str, (unsigned)ind, 6);
-	nb = ft_atoi_base(raw, "0123456789ABCDEF");
-	free (raw);
-	raw = NULL;
-	return (nb);
-}
-
-int	ext_col(char *str, t_map *map)
-{
-	int	i;
-	int	start;
-
-	i = 0;
-	start = 0;
-	while (str[++i] != '\0')
-	{
-		if (str[i] == ',')
-			start = i + 3;
-	}
-	if (start == 0)
-		return (0xFFFFFF);
-	map->is_col = 1;
-	i = 0;
-	while (i <= 5 && str[start + i] != '\0')
-	{
-		if (ft_strchr("0123456789abcdef", str[start + i]) != NULL)
-			return (ext_col_low(str, start + i));
-		else if (ft_strchr("0123456789ABCDEF", str[start + i]) != NULL)
-			return (ext_col_up(str, start + i));
-		i++;
-	}
-	return (0xFFFFFF);
-}
 
 void	ft_find_col(t_map *map, t_point *p)
 {
@@ -91,41 +40,53 @@ void	ft_find_col(t_map *map, t_point *p)
 int	ft_deg_bc(float rz)
 {
 	int	res;
+	int	green;
 
-	(void) rz;
-	res = 0;
+	if (rz == 0.00)
+		return (255);
+	rz = rz / (float)0.25;
+	green = (int)(255 * rz);
+	res = 255 + green * 256;
 	return (res);
 }
 
 int	ft_deg_cv(float rz)
 {
 	int	res;
+	int	blue;
 
-	(void) rz;
-	res = 0;
 	if (rz == 0.25)
 		return (65535);
+	rz = (rz - (float)0.25) / (float)0.25;
+	blue = (int)(255 * rz);
+	res = 65535 - blue;
 	return (res);
 }
 
 int	ft_deg_vj(float rz)
 {
 	int	res;
+	int red;
 
-	(void) rz;
-	res = 0;
 	if (rz == 0.5)
 		return (65280);
+	rz = (rz - (float)0.5) / (float)0.25;
+	red = (int)(255 * rz);
+	res = 65280 + red * 65536;
 	return (res);
 }
 
 int	ft_deg_jr(float rz)
 {
 	int	res;
+	int green;
 
-	(void) rz;
-	res = 0;
 	if (rz == 0.75)
 		return (16776960);
+	if (rz == 1.00)
+		return (16711680);
+	rz = (rz - (float)0.75) / (float)0.25;
+	green = 255 - (int)(255 * rz);
+	res = 16776960 - green * 256;
 	return (res);
 }

@@ -23,8 +23,9 @@ SRCS_FILES =  \
 	$(SRCS_DIR)/utils.c \
 	$(SRCS_DIR)/debug.c \
 	$(SRCS_DIR)/lst_utils.c \
-	$(SRCS_DIR)/color.c \
-	$(SRCS_DIR)/color_deg.c \
+	$(SRCS_DIR)/color_01.c \
+	$(SRCS_DIR)/color_02.c \
+	$(SRCS_DIR)/color_03.c \
 	$(SRCS_DIR)/image.c \
 	$(SRCS_DIR)/rotate.c \
 	$(SRCS_DIR)/set_nodes.c

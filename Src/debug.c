@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 11:51:16 by Lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/11 13:43:35 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/01/11 14:08:35 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void	ft_put_message(void)
 	ft_putstr_fd(" de l'axe x avec les touches q et w\n - tourner ", 1);
 	ft_putstr_fd("autour de l'axe y avec les touches a et s\n - tourner", 1);
 	ft_putstr_fd(" autour de l'axe z avec les touches z et x\n\n", 1);
-	ft_putstr_fd("Pour quitter le programme appuyer sur ESC ou cliquer", 1);
+	ft_putstr_fd("Pour quitter le programme appuyez sur ESC ou cliquez", 1);
 	ft_putstr_fd(" sur la croix\n\n", 1);
 }
