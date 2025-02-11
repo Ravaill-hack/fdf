@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:01:04 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/11 15:25:44 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:49:17 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_var	*init_var(const char *path)
 {
 	t_var	*var;
 
-	var = (t_var *)calloc(1, sizeof(t_var));
+	var = (t_var *)ft_calloc(1, sizeof(t_var));
 	if (!var)
 		return (NULL);
 	var->map = init_map(path);
@@ -37,10 +37,10 @@ t_map	*init_map(const char *path)
 {
 	t_map	*map;
 
-	map = (t_map *)calloc(1, sizeof(t_map));
+	map = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (NULL);
-	map->point = (t_point **)calloc(1, sizeof(t_point *));
+	map->point = (t_point **)ft_calloc(1, sizeof(t_point *));
 	if (!map->point)
 		return (NULL);
 	*(map->point) = NULL;
@@ -56,7 +56,7 @@ t_img	*init_img(void *mlx_p)
 {
 	t_img	*im;
 
-	im = (t_img *)calloc(1, sizeof(t_img));
+	im = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!im)
 		return (NULL);
 	im->im_p = mlx_new_image(mlx_p, X_WIN, Y_WIN);

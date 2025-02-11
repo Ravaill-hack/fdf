@@ -6,7 +6,7 @@
 /*   By: lmatkows <lmatkows@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 08:54:49 by lmatkows          #+#    #+#             */
-/*   Updated: 2025/01/11 15:41:50 by lmatkows         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:57:39 by lmatkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 		mlx_put_image_to_window(var->mlx_p, var->win_p, var->img->im_p, 0, 0);
 		mlx_hook(var->win_p, 17, 0, ft_close_n_free, (void *)var);
 		mlx_key_hook(var->win_p, do_sth, (void *)var);
+		//mlx_loop_hook(var->mlx_p, do_sth, (void *)var);
 		mlx_loop(var->mlx_p);
 	}
 	else
